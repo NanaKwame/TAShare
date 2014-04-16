@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140416082857) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "audios", force: true do |t|
     t.integer  "class_ta_id"
     t.string   "title"
