@@ -10,8 +10,6 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
 #bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem "therubyracer"
-gem "less-rails"
 gem "font-awesome-rails"
 
 
