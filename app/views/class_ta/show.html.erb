@@ -1,8 +1,32 @@
-<h1>Hello! Welcome to <span style = "color: red"><%= @class.name %></span></h1>
 
-<h3>Details</h3>
-<ul>
-	<li><strong>Course number</strong>: <%= @class.number %></li>
-	<li><strong>Course Name</strong>: <%= @class.name %></li>
-	<li><strong>Description</strong>: <%= @class.description %></li>
-</ul>
+<div id = "cp-content">
+	<div id = "cp-results">
+		<legend style = "border-color: grey;"><h1 style = "text-align: center;">6.813</h1></legend>
+		<div id = 'cp-searchOverlay'>
+			<span style = "margin-right: 15px;" class = "cp-icon glyphicon glyphicon-search"></span>
+		</div>
+		<input type = 'text' id = 'cp-search' placeholder = 'Search Class Results'>
+		<div id = "cp-filter" class="btn-group dropdown keep-open">
+		  <button id = "cp-filterBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		    Filter <span class="caret"></span>
+		  </button>
+		  <ul id = "cp-menu" class="dropdown-menu" role="menu">
+		    <li>
+		    	<div style = "text-align: center;">
+		    		<button id = "cp-topRatedBtn" class = "btn btn-default">Top Rated</button>
+		    		<button id = "cp-NewestBtn" class = "btn btn-default">Newest</button>
+		    	</div>
+		    </li>
+		    <li class="divider"></li>
+		    <li class = "cp-filterOption" id = "cp-filterStarred"><a>Starred<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterVideos"><a>Videos<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterWebsites"><a>Websites<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterAudio"><a>Audio<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterNotes"><a>Notes<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterProblems"><a>Problems<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li class = "cp-filterOption" id = "cp-filterOther"><a>Other<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		  </ul>
+		</div>
+	</div>
+	<div id = "cp-viewer"></div>
+</div>
