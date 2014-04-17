@@ -1,0 +1,53 @@
+.login-signin{
+	margin-left: 730px;
+	.login-signin-password{
+		width: 200px;
+		vertical-align: middle;
+		margin: 10px;
+		.login-signin-remember{
+		}
+		input{
+			width: inherit;
+		}
+	}
+	.login-signin-submit{
+		vertical-align: middle;
+		margin-right: 30px; 
+		margin: 10px;
+	}
+	.login-signin-email{
+		width: 200px;
+		vertical-align: middle;
+		margin: 10px;
+		.login-signin-forgot{
+		}
+		input{
+			width: inherit;
+		}
+	}
+
+}
+.inlineb{
+	display: inline-block;
+}
+.login-bottom{
+	vertical-align: middle;
+	margin-top: 50px;
+	.login-about{
+		width: 740px;
+		height: 400px;
+		img{
+			width: inherit;
+			height: inherit;
+			border-radius: 20px;
+		}
+	}
+
+	.login-signup{
+		width: 400px;
+		vertical-align: top;
+		padding: 50px;
+		height: 400px;
+		text-align: center;
+	}
+}
