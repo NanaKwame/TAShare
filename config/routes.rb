@@ -4,11 +4,17 @@ TAShare::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#landing'
+  root 'home#homepage'
   resources :home do
     collection do
-      get 'landing'
+      get 'homepage'
+      get 'help'
+      get 'setting'
     end
+  end
+
+  resources :course do
+
   end
 
   # Example of regular route:

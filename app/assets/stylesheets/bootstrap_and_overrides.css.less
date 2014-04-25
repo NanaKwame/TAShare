@@ -1,0 +1,125 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+//@import "fontawesome/font-awesome";
+
+// Glyphicons
+@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+
+.btn-primary {
+  background-image: none;
+  background-color: #51B599;
+  color:#ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #6DF2CE;
+  background-color: #51B599;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-color: transparent; 
+}
+
+.btn-danger {
+
+  background-image: none;
+  background-color: #B15047;
+
+}
+
+.lead {
+  margin-bottom : 5px;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.btn-danger.disabled,
+.btn-danger[disabled] {
+
+  background-image: none;
+  background-color: #B15047;
+  color: #FF0043;
+}
+.btn-info {
+
+  background-image: none;
+  background-color: #0BA2D9;
+
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.btn-info.disabled,
+.btn-info[disabled] {
+
+  background-image: none;
+  background-color: #0BA2D9;
+  color: #6DF2CE;
+}
+h2 {
+    font-family: 'Karla', sans-serif;    
+    //font-family: 'Bubbler One', sans-serif;
+}
+
+.blurb{
+    font-family: 'Bubbler One', sans-serif;
+    font-size: 1.5em;
+    color: #545454;
+    background-color: #eeeeee;
+}    
+
+h3{
+    font-size:1.5em;
+}
+
+a {
+  color: #0BA2D9;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #6DF2CE;
+  text-decoration: underline;
+}
+.carousel-indicators .active {
+  background-color: #0BA2D9;
+}
