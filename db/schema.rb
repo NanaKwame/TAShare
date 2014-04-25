@@ -11,25 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416082857) do
-
-  create_table "audios", force: true do |t|
-    t.integer  "class_ta_id"
-    t.string   "title"
-    t.string   "link"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140416062514) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
-    t.integer  "video_id"
-    t.integer  "website_id"
-    t.integer  "audio_id"
-    t.integer  "note_id"
-    t.integer  "problem_id"
-    t.string   "res_type"
+    t.integer  "resource_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,29 +31,20 @@ ActiveRecord::Schema.define(version: 20140416082857) do
 
   create_table "likes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "video_id"
-    t.integer  "website_id"
-    t.integer  "audio_id"
-    t.integer  "note_id"
-    t.integer  "problem_id"
-    t.string   "res_type"
+    t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "notes", force: true do |t|
+  create_table "resources", force: true do |t|
     t.integer  "class_ta_id"
     t.string   "title"
     t.string   "link"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "problems", force: true do |t|
-    t.integer  "class_ta_id"
-    t.string   "title"
-    t.string   "link"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "type"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,27 +72,9 @@ ActiveRecord::Schema.define(version: 20140416082857) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "videos", force: true do |t|
-    t.integer  "class_ta_id"
-    t.string   "title"
-    t.string   "link"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "vieweds", force: true do |t|
     t.integer  "user_id"
     t.integer  "class_ta_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "websites", force: true do |t|
-    t.integer  "class_ta_id"
-    t.string   "title"
-    t.string   "link"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

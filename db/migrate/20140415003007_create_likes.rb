@@ -2,12 +2,7 @@ class CreateLikes < ActiveRecord::Migration
   def change
     create_table :likes do |t|
       t.integer :user_id
-      t.integer :video_id
-      t.integer :website_id
-      t.integer :audio_id
-      t.integer :note_id
-      t.integer :problem_id
-      t.string :type
+      t.integer :resource_id
       t.timestamps
     end
   end
