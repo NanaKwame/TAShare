@@ -1,5 +1,4 @@
 var buildPreview;
-$(document).ready(function() {
 	// CLASS_PAGE = {}; // we don't need this because of doucment.ready
 	var cpBuild = function() {
 		console.log("building other")
@@ -118,11 +117,6 @@ $(document).ready(function() {
 			}
 		});
 	}
-	var Build = function() {
-		NavbarBuild();
-		cpBuild();
-	}
-	window.onload = Build;
-});# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+// # Place all the behaviors and hooks related to the matching controller here.
+// # All this logic will automatically be available in application.js.
+// # You can use CoffeeScript in this file: http://coffeescript.org/

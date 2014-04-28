@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TAShare</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>TAShare</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
+<body style = "font-family: GandhiSans">
+
+
+  <!-- <div id = "divPusher"></div> -->
 
   <div class="center">
     <% flash.each do |key, value| %>
@@ -14,6 +17,19 @@
     <% end %>
   </div>
   <% if current_user != nil%>
+  <div id="navbar">
+    <div id = 'navContainer'>
+      <div id = 'navLeft'>
+        <div id = 'logo'><h1 style = 'margin-top: 10px; font-family: BebasNeueBold'>TA-Share</h1></div>
+        <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
+      </div>
+      <div id = 'navRight'>
+        <%= image_tag "profPic.png", {id: 'profPic', class: 'img-circle'} %>
+        <div id = 'name'>Calvin Li</div>
+        <span style = 'cursor: pointer;' id = 'gear' class = 'glyphicon glyphicon-cog'></span>
+      </div>
+    </div>
+  </div>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
   <%end%>
 <%= yield %>

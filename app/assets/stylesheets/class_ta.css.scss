@@ -1,0 +1,100 @@
+// Place all the styles related to the class_ta controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+
+}
+body {
+	/*background-color: black;*/
+	background-image: url(blueBackground.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: GandhiSans;
+}
+h1, h2, h3 {
+	font-family: BebasNeueBold;
+	margin-top: 0px;
+}
+
+#cp-content {
+	margin: 10px;
+	/*overflow: hidden;*/
+}
+
+#cp-results {
+	width: 400px;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.9);
+	float: left;
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 3px;
+	position: relative;
+}
+	#cp-searchOverlay {
+		pointer-events: none;
+		height: 40px;
+		position: absolute;
+	}
+		.cp-icon {
+			vertical-align: middle;
+			float: right;
+			margin-top: 10px;
+		}
+	#cp-search {
+		padding: 10px;
+		border: 1px solid #ccc;
+		height: 40px;
+		border-radius: 20px;
+		/*box-shadow: 2px 2px 4px #ccc;*/
+	}
+
+	#cp-filter {
+		vertical-align: top;
+	}
+	.cp-filterOption {
+		cursor: pointer;
+	}
+	#cp-filterBtn {
+		padding: 10px;
+	}
+	#cp-topRatedBtn {
+		width: 40%;
+		margin-left: 2px;
+		border-radius: 4px 0 0 4px;
+		outline: none;
+	}
+	#cp-newestBtn {
+		width: 40%;
+		margin-left: -4px;
+		border-radius: 0 4px 4px 0;
+		outline: none;
+	}
+
+	/* Twitter-like glowing box */
+	input[type=text], textarea {outline:none;}
+	 
+	input[type=text]:focus, textarea:focus {
+		box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	}
+
+#cp-viewer {
+	height: 100%;
+	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.9);
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 3px;
+
+}

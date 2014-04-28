@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require twitter/bootstrap
-//= require bootstrap
+//= require bootstrap.min
+//= require handlebars
 //= require select2
 //= require turbolinks
 

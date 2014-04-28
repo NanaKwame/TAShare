@@ -1,14 +1,5 @@
 <html>
-	<head>
-		<script type="text/javascript" src = "jQuery.js"></script> <!-- change this for the app -->
-		<script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-		<script type="text/javascript" src = "handlebars-v1.3.0.js"></script>
-		<script type="text/javascript" src = "bootstrap3/js/bootstrap.min.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.css">
-	</head>
 	<body>
-		<div id = "navbar"></div>
 		<div id = "cp-content">
 			<div id = "cp-results">
 				<legend id = "cp-classTitle" style = "border-color: grey;">
@@ -16,7 +7,7 @@
 						<span>9.00</span> 
 
 						<button id= "cp-uploadBtn" type="button" class="btn btn-default" title = "Upload" data-toggle="modal" data-target="#myModal" style="cursor: pointer">
-							<img id = "cp-uploadImg" src = "images/upload.png"/>
+							<img id = "cp-uploadImg" src = "/assets/upload.png"/>
 
 						</button>
 
@@ -50,41 +41,41 @@
 				</div>
 				<div id = "cp-resultsDisplay">
 					<div class = "cp-result" data-type = "video">
-						<img class = "cp-result-starFilled" src = 'images/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = 'images/StarOutline.gif'/>
+						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 						<h2 class = "cp-result-title">Video 1</h2>
-						<img class = "cp-result-icon" src = 'images/videoIcon.png'/>
+						<img class = "cp-result-icon" src = '/assets/videoIcon.png'/>
 						<h2 class = "cp-results-upvotes">+2123</h2>
 					</div>
 					<div class = "cp-result" data-type = "note">
-						<img class = "cp-result-starFilled" src = 'images/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = 'images/StarOutline.gif'/>
+						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 						<h2 class = "cp-result-title">Note 1</h2>
-						<img class = "cp-result-icon" src = 'images/noteIcon.png'/>
+						<img class = "cp-result-icon" src = '/assets/noteIcon.png'/>
 						<h2 class = "cp-results-upvotes">+453</h2>
 
 					</div>
 					<div class = "cp-result" data-type = "audio">
-						<img class = "cp-result-starFilled" src = 'images/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = 'images/StarOutline.gif'/>
+						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 						<h2 class = "cp-result-title">Audio 1</h2>
-						<img class = "cp-result-icon" src = 'images/audioIcon.png'/>
+						<img class = "cp-result-icon" src = '/assets/audioIcon.png'/>
 						<h2 class = "cp-results-upvotes">+113</h2>
 
 					</div>
 					<div class = "cp-result" data-type = "website">
-						<img class = "cp-result-starFilled" src = 'images/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = 'images/StarOutline.gif'/>
+						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 						<h2 class = "cp-result-title">Website 1</h2>
-						<img class = "cp-result-icon" src = 'images/websiteIcon.png'/>
+						<img class = "cp-result-icon" src = '/assets/websiteIcon.png'/>
 						<h2 class = "cp-results-upvotes">+50</h2>
 
 					</div>
 					<div class = "cp-result" data-type = "problems">
-						<img class = "cp-result-starFilled" src = 'images/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = 'images/StarOutline.gif'/>
+						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 						<h2 class = "cp-result-title">Problems 1</h2>
-						<img class = "cp-result-icon" src = 'images/problemsIcon.jpg'/>
+						<img class = "cp-result-icon" src = '/assets/problemsIcon.jpg'/>
 						<h2 class = "cp-results-upvotes">+23</h2>
 
 					</div>
@@ -103,14 +94,14 @@
           </p>
           </div>
           <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/like.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
           </div>
         </div>
       </script>
       <script id="note-template" type="text/x-handlebars-template">
         <div id="cp-problem">
-          <img width="690" src="questionpdf.jpg">
+          <img width="690" src="/assets/questionpdf.jpg">
         </div>
         <div id="cp-rbottom">
           <div id="cp-rdes"> 
@@ -120,8 +111,8 @@
           </p>
           </div>
           <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/like.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
           </div>
         </div>
       </script>
@@ -141,8 +132,8 @@
           </p>
           </div>
           <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/like.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
           </div>
         </div>
       </script>
@@ -158,14 +149,14 @@
           </p>
           </div>
           <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/like.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
           </div>
         </div>
       </script>
       <script id="problem-template" type="text/x-handlebars-template">
         <div id="cp-problem">
-          <img width="690" src="questionpdf.jpg">
+          <img width="690" src="/assets/questionpdf.jpg">
         </div>
         <div id="cp-rbottom">
           <div id="cp-rdes"> 
@@ -175,8 +166,8 @@
           </p>
           </div>
           <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = 'images/like.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
+            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
           </div>
         </div>
       </script>
@@ -232,8 +223,7 @@
       </div>
 
   </body>
-  <script type="text/javascript" src = "classPage.js"></script>
-  <script type="text/javascript" src = "navbar.js"></script>
-  <link rel="stylesheet" type="text/css" href="classPage.css">
-  <link rel="stylesheet" type="text/css" href="navbar.css">
+  <script type="text/javascript">
+  cpBuild();
+  </script>
 </html>
