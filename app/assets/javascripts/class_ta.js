@@ -116,6 +116,15 @@ var buildPreview;
 				$(this).css("opacity", 0);
 			}
 		});
+		$(".um-up-type").on("click", function() {
+			var val = $(this).attr("data-type");
+			$($("input#um-inp-type")[0]).val(val);
+		});
+		$("select#resource_class_ta_id").select2({
+			width: "150px",
+			allowClear: true
+		});
+		
 	}
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.

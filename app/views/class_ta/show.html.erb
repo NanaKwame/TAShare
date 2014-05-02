@@ -1,6 +1,7 @@
 <html>
 
 	<body>
+    <p id="notice"><%= notice %></p>
 		<div id = "cp-content">
 			<div id = "cp-results">
 				<legend id = "cp-classTitle" style = "border-color: grey;">
@@ -176,7 +177,7 @@
       </div>
 		</div>
     <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -186,39 +187,54 @@
           <div class="modal-body" id="um-content">
           	<div id="um-fileOpt">
           		<ul class="nav nav-pills nav-stacked">
-          			<li class="active"><a href="#" data-toggle="pill">Video</a></li>
-          			<li><a href="#" data-toggle="pill">Website</a></li>
-          			<li><a href="#" data-toggle="pill">Audio</a></li>
-          			<li><a href="#" data-toggle="pill">Text/Example</a></li>
+          			<li class="active"><a href="#" class="um-up-type" data-type ="Video" data-toggle="pill">Video</a></li>
+          			<li><a href="#" class="um-up-type" data-type ="Website" data-toggle="pill">Website</a></li>
+          			<li><a href="#" class="um-up-type" data-toggle="pill" data-type ="Audio">Audio</a></li>
+          			<li><a href="#"  data-type ="Note" class="um-up-type"data-toggle="pill">Text/Example</a></li>
           		</ul>
 
           	</div>
 
             	<div id="um-inputs">
-            		<form role="form">
-            			<div class="form-group">
-            				<label for="um-title">Title</label>
-            				<input type="title" class="form-control" id="um-title" placeholder="Enter Title">
-            			</div>
-            			<div class="form-group">
-            				<label for="um-class">Class</label>
-            				<input type="class" class="form-control" id="um-class" placeholder="Enter Class">
-            			</div>
-            			<div class="form-group">
-            				<label for="um-link">Link</label>
-            				<input type="link" class="form-control" id="um-link" placeholder="Enter Link">
-            			</div>
-            			<div class="form-group">
-            				<label for="um-descrip">Description</label>
-            				<textarea type="description" class="form-control" id="um-descrip" placeholder="Enter Description" rows="2"></textarea>
-            			</div>
-<!--             			<button type="submit" class="btn btn-default">Submit</button> -->
-            		</form>
+                <%= form_for(@resource, :html => { :class => "form-horizontal", :role => "form"}) do |f| %>
+                <% if @resource.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+                    <ul>
+                    <% @resource.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="form-group">
+                  <%= f.label :title  , :class => 'control-label'%>
+                  <%= f.text_field :title, :required=>:true, :class => 'form-control', :id => "um-title", :type => "title" , :placeholder =>'Enter Title'%>
+                </div>
+                <div class="form-group">
+                  <%= f.label "Class" , :class => 'control-label' %>
+                  <%= f.select(:class_ta_id, ClassTa.all.collect {|p| [ p.number, p.id ] }, :required=>:true)%>
+                </div>
+                <div class="form-group">
+                  <%= f.label :link , :class => 'control-label' %>
+                  <%= f.text_field :link, :required=>:true, :class => 'form-control',:id => 'um-link',:type => "link", :placeholder =>'Enter Link'%>
+                </div>
+                <input id ="um-inp-type" type="hidden" name="resource[type]" value="Video" ></input>
+                <div class="form-group">
+                  <%= f.label :description , :class => 'control-label' %>
+                  <%= f.text_area :description, :required=>:true , :class => 'form-control', :id => 'um-descrip', :rows => '2', :placeholder =>'Enter Description'%>
+                </div>
+                
+                <div class="modal-footer">
+                  <%= f.submit :class=> "btn btn-primary btn-large"%>
+                </div>
+                <% end %>
+              
+
             	</div>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-default" data-dismiss="modal">Upload</button>
-            </div>
+
           </div>
         </div>
       </div>

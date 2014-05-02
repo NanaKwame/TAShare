@@ -14,11 +14,14 @@ TAShare::Application.routes.draw do
     end
   end
 
-  resources :course do
+  resources :class_ta
 
-  end
-  resources :class_ta do
-  end
+  resources :resources
+  resources :audios, :controller => "resources", :type => "Audio"
+  resources :notes, :controller => "resources", :type => "Note"
+  resources :problems, :controller => "resources", :type => "Problem"
+  resources :videos, :controller => "resources", :type => "Video"
+  resources :websites, :controller => "resources", :type => "Website"
 
 
   # Example of regular route:

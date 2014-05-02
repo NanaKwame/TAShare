@@ -3,6 +3,9 @@ class ClassTaController < ApplicationController
 	def show
 		id = params[:id]
 		@class = ClassTa.find(id)
+		@resource = Resource.new
+		@resource.class_ta_id = @class.id
+
 	end
 
 	private
