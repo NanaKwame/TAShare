@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TAShareApp">
 <head>
     <title>TAShare</title>
     <%= stylesheet_link_tag    "application", media: "all" %>
@@ -32,7 +32,10 @@
   </div>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
   <%end%>
-<%= yield %>
+
+  <div ng-view>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
