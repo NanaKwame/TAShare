@@ -26,11 +26,11 @@
       <div id = 'navRight'>
         <%= image_tag "profPic.png", {id: 'profPic', class: 'img-circle'} %>
         <div id = 'name'>Calvin Li</div>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
         <span style = 'cursor: pointer;' id = 'gear' class = 'glyphicon glyphicon-cog'></span>
       </div>
     </div>
   </div>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
   <%end%>
   
   <%= yield %>
