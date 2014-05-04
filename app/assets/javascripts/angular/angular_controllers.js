@@ -32,13 +32,13 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
                 thisResult.bookmarked = false;
                 thisResult.liked = false;
                 for (var j = 0; j < thisBookmarks.length; j++) {
-                    if (thisBookmarks[i].user_id == userId) {
+                    if (thisBookmarks[j].user_id == userId) {
                         thisResult.bookmarked = true;
                     }
                 }
 
                 for (var j = 0; j < thisLikes.length; j++) {
-                    if (thisLikes[i].user_id == userId) {
+                    if (thisLikes[j].user_id == userId) {
                         thisResult.liked = true;
                     }
                 }
