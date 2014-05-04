@@ -46,6 +46,32 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             });
           }
 
+          $scope.removelike = function(resourceid) {
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/removelike",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
+          }
+
+        $scope.removebookmark = function(resourceid) {
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/removebookmark",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
+          }
+
         $.ajax({
           type: "GET",
           url: "/class_ta/resourcejs",

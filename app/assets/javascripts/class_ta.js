@@ -146,56 +146,20 @@ var buildPreview;
       allowClear: true
     });
 
-  addlike = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/addlike",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+  addlike = function() {
+    
   }
 
-  removelike = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/removelike",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+  removelike = function() {
+    
   }
 
-  addbookmark = function(resourceid) {
-    console.log(resourceid);
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/addbookmark",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+  showbookmark = function() {
+    
   }
-  removebookmark = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/removebookmark",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+
+  hidebookmark = function() {
+    
   }
     
 }
