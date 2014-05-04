@@ -24,6 +24,25 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
           contentType: 'application/json',
           dataType: "json"
         }).done(function(data) {
+          
+          for (var i = 0; i < data.length; i++) {
+                var thisResult = data[i];
+                var thisBookmarks = thisResult["bookmarks"];
+                var thisLikes = thisResult["likes"];
+                thisResult.bookmarked = false;
+                thisResult.liked = false;
+                for (var j = 0; j < thisBookmarks.length; j++) {
+                    if (thisBookmarks[i].user_id == userId) {
+                        thisResult.bookmarked = true;
+                    }
+                }
+
+                for (var j = 0; j < thisLikes.length; j++) {
+                    if (thisLikes[i].user_id == userId) {
+                        thisResult.liked = true;
+                    }
+                }
+          }
           console.log(data);
           $scope.$apply(function() {
             $scope.results = data;

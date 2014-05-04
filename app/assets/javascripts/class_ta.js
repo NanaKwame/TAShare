@@ -1,5 +1,7 @@
 var buildPreview;
   // CLASS_PAGE = {}; // we don't need this because of doucment.ready
+
+// var starClick;
   var cpBuild = function() {
     console.log("building other")
     // Styling JavaScript
@@ -126,13 +128,15 @@ var buildPreview;
       buildPreview($(this).attr("data-type"));
     });
 
-    $(".cp-result-starFilled").on("click", function() {
-      if ($(this).css("opacity") == 0) {
-        $(this).css("opacity", 1);
-      } else {
-        $(this).css("opacity", 0);
-      }
-    });
+    starClick = function() {
+      console.log(this);
+      console.log($(this));
+      // if ($("#" + id).css("opacity") == 0) { // not favorited
+      //   $("#" + id).css("opacity", 1);
+      // } else { // favorited
+      //   $("#" + id).css("opacity", 0);
+      // }
+    }
     $(".um-up-type").on("click", function() {
       var val = $(this).attr("data-type");
       $($("input#um-inp-type")[0]).val(val);
@@ -141,10 +145,35 @@ var buildPreview;
       width: "150px",
       allowClear: true
     });
-    
-    
-    
+
+  addlike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/addlike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+
   }
+
+  addbookmark = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/addbookmark",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+  }
+    
+}
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/

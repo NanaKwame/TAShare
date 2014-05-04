@@ -1,6 +1,6 @@
 module ClassTaHelper
   def as_json(options={})
-    super(options.merge(:include => [:type]))
+    super(options.merge(:include => [:type, :likes, :bookmarks]))
   end
 
   def type

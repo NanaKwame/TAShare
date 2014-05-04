@@ -28,7 +28,28 @@ class ClassTaController < ApplicationController
         format.xml  { render :xml => stuff.as_json }
         format.json { render :json => stuff.as_json}
     end
+  end
 
+  def addlike
+    resid = params[:resource_id]
+    Like.create(:user_id => current_user.id, :resource_id => resid)
+    currentlikes = Like.where(:resource_id => resid)
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => currentlikes.as_json }
+        format.json { render :json => currentlikes.as_json}
+    end
+  end
+
+  def addbookmark
+    resid = params[:resource_id]
+    Bookmark.create(:user_id => current_user.id, :resource_id => resid)
+    currentbookmarks = Bookmark.where(:resource_id => resid)
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => currentbookmarks.as_json }
+        format.json { render :json => currentbookmarks.as_json}
+    end
   end
 
   private

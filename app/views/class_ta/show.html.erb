@@ -43,8 +43,8 @@
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | orderBy: resultsOrder">
-				<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | orderBy: resultsOrder" id = "cp-result{{result.id}}">
+				<img class = "cp-result-starFilled" ng-if = "result.cpBookmarked()" src = '/assets/StarOutlineFilled.png'/>
 				<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
 				<h2 class = "cp-result-title">{{result.title}}</h2>
 				<img class = "cp-result-icon" ng-src = '{{result.img}}'/>
@@ -121,7 +121,10 @@
 
   <script type="text/javascript">
   var classid = <%= @id%>;
+  var userId = <%= current_user.id %>;
   var resources;
+  var addlike;
+  var addbookmark;
   //this variable will have all the resouces
   cpBuild();
   </script>
