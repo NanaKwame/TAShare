@@ -94,6 +94,7 @@ h1, h2, h3 {
 				height: 30px;
 				margin-left: 10px;
 				float: left;
+				cursor: pointer;
 			}
 			.cp-result-title {
 				margin: 0;

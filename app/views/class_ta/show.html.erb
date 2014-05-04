@@ -43,9 +43,9 @@
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | orderBy: resultsOrder" id = "cp-result{{result.id}}">
-				<img class = "cp-result-starFilled" ng-if = "result.cpBookmarked()" src = '/assets/StarOutlineFilled.png'/>
-				<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | orderBy: resultsOrder" id = "{{result.id}}">
+				<img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/>
+				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id)"/>
 				<h2 class = "cp-result-title">{{result.title}}</h2>
 				<img class = "cp-result-icon" ng-src = '{{result.img}}'/>
 				<h2 class = "cp-results-upvotes">{{result.upvotes}}</h2>

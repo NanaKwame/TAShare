@@ -17,6 +17,35 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         // gets the resources for this class
         var resourceList = [];
         // $scope.results;
+
+        $scope.addlike = function(resourceid) {
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/addlike",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
+
+          }
+
+          $scope.addbookmark = function(resourceid) {
+            console.log(resourceid);
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/addbookmark",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
+          }
+
         $.ajax({
           type: "GET",
           url: "/class_ta/resourcejs",
@@ -24,21 +53,23 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
           contentType: 'application/json',
           dataType: "json"
         }).done(function(data) {
-          
+          console.log(data);
           for (var i = 0; i < data.length; i++) {
                 var thisResult = data[i];
                 var thisBookmarks = thisResult["bookmarks"];
                 var thisLikes = thisResult["likes"];
                 thisResult.bookmarked = false;
                 thisResult.liked = false;
+                console.log("thisBookmarks: ", thisBookmarks);
                 for (var j = 0; j < thisBookmarks.length; j++) {
-                    if (thisBookmarks[i].user_id == userId) {
+                    console.log("thisBookmarks[" + i + "]: ", thisBookmarks[i]);
+                    if (thisBookmarks[j].user_id == userId) {
                         thisResult.bookmarked = true;
                     }
                 }
 
                 for (var j = 0; j < thisLikes.length; j++) {
-                    if (thisLikes[i].user_id == userId) {
+                    if (thisLikes[j].user_id == userId) {
                         thisResult.liked = true;
                     }
                 }

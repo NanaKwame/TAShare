@@ -161,6 +161,7 @@ var buildPreview;
   }
 
   addbookmark = function(resourceid) {
+    console.log(resourceid);
     $.ajax({
       type: "GET",
       url: "/class_ta/addbookmark",
