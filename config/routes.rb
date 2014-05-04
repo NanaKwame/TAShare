@@ -17,6 +17,8 @@ TAShare::Application.routes.draw do
   resources :class_ta do
     collection do
       get 'resourcejs'
+      get 'addlike'
+      get 'addbookmark'
     end
   end
 

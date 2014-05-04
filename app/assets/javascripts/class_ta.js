@@ -137,6 +137,33 @@ var buildPreview;
       resources = data;
       console.log(data);
     });
+
+  addlike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/addlike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+
+  }
+
+  addbookmark = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/addbookmark",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+  }
     
   }
 // # Place all the behaviors and hooks related to the matching controller here.
