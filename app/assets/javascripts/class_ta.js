@@ -31,11 +31,24 @@ var buildPreview;
     var windowWidth = $(window).width() - (2*marginSize);
     var resultsWidth = cpResults.width() + (2*marginSize);
 
-    cpContent.css("margin-top", navbarHeight - (marginSize*2))
-      .height(windowHeight - navbarHeight + (marginSize) + noticeHeight);
+    // Make notice disappear if it has not content
+    if (cpNotice.children().html() == '') {
+      cpNotice.css("display", "none");
+      cpNotice.css("padding", 0);
+    } else {
+      cpNotice.animate({"opacity": 1}, 3000, function() {
+        cpNotice.animate({"opacity": 0}, 500, function() {
+          cpNotice.css("display", "none");
+        });
+      });
+    }
 
+    cpContent.css("margin-top", navbarHeight)
+      .height(windowHeight - navbarHeight + (marginSize));
+
+    cpResults.height(cpContent.height() - (2*marginSize));
     cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize))
-      .css("margin-left", marginSize);
+      .css("margin-left", marginSize).height(cpContent.height() - (2*marginSize));
 
     cpSearch.width(cpResults.width() - cpFilter.width() - (2*paddingSize) - marginSize);
 
@@ -54,14 +67,16 @@ var buildPreview;
     cpUploadOverlay.height(cpUploadImg.height()).width(cpUploadImg.width());
     
     cpTitleCont.css("margin-top", 35).height(33);
+
     // Responsive JS
     $(window).resize(function() {
       var windowHeight = $(window).height() - (2*marginSize);
       var windowWidth = $(window).width() - (2*marginSize);
 
       // console.log("windowHeight: " + windowHeight + ", navbarHeight: " + navbarHeight + ", marginSize: " + marginSize);
-      cpContent.height(windowHeight - navbarHeight + (marginSize) + noticeHeight);
-      cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize));
+      cpContent.height(windowHeight - navbarHeight + (marginSize));
+      cpResults.height(cpContent.height() - (2*marginSize));
+      cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize)).height(cpContent.height() - (2*marginSize));
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
     });
 

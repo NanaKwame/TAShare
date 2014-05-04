@@ -141,10 +141,10 @@ h1, h2, h3 {
 		overflow: hidden;
 		border-radius: 8px;
 		border: 1px solid rgba(0, 119, 169, 1);
-		background-color: #81BFFC
+		background-color: #81BFFC;
 	}
 	#cp-uploadBtn:hover {
-		background-color: rgba(0, 119, 169, 1);
+		background-color: #2671B6;
 	}
 
 	/* Twitter-like glowing box */
@@ -241,13 +241,25 @@ h1, h2, h3 {
 
 #um-inputs{
 	height: 100%;
-	width: 370;
+	width: 370px;
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 0.8);
 	padding: 10px;
 	border-radius: 3px;
+	float: right;
 }
 
 textarea {
    resize: none;
+}
+
+#notice {
+	position: absolute;
+	z-index: 1;
+	margin: auto;
+	width: 400px;
+	margin-left: -200px;
+	left: 50%;
+	top: 50%;
+	text-align: center;
 }
