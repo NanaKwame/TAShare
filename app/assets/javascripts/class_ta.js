@@ -23,6 +23,10 @@ var buildPreview;
     var cpTitleCont = $(".cp-result-titleCont");
     var cpNotice = $("#notice");
 
+    var umContents = $("#um-content");
+    var umInputs = $("#um-inputs");
+    var umFiles = $("#um-fileOpt");
+
     var marginSize = 10;
     var paddingSize = 10;
     var navbarHeight = cpNavbar.height() + marginSize;
@@ -80,7 +84,13 @@ var buildPreview;
       cpResults.height(cpContent.height() - (2*marginSize));
       cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize)).height(cpContent.height() - (2*marginSize));
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
-    });
+  });
+
+    console.log("contents width: ", umContents.width());
+    console.log("umFiles width: ", umFiles.width())
+    var totalwidthLeft = umContents.width() - umFiles.width();
+    console.log("total left: ", totalwidthLeft);
+    umInputs.css("width", totalwidthLeft-40);
 
     $("#cp-menu").on("click", function() {
       $('.dropdown.keep-open').data('closable', false);
@@ -198,6 +208,7 @@ var buildPreview;
   }
     
 }
+
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
