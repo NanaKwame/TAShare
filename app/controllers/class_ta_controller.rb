@@ -52,6 +52,26 @@ class ClassTaController < ApplicationController
     end
   end
 
+  def removelike
+    resid = params[:resource_id]
+    Like.where(:user_id => current_user.id, :resource_id => resid).destroy_all
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => {:status => "Deleted"} }
+        format.json { render :json => {:status => "Deleted"}}
+    end
+  end
+
+  def removebookmark
+    resid = params[:resource_id]
+    Bookmark.where(:user_id => current_user.id, :resource_id => resid).destroy_all
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => {:status => "Deleted"} }
+        format.json { render :json => {:status => "Deleted"}}
+    end
+  end
+
   private
   #redirects user if they are not logged in
   def logged_in

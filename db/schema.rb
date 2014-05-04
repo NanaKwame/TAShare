@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140504034048) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
     t.integer  "resource_id"

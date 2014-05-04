@@ -19,6 +19,8 @@ TAShare::Application.routes.draw do
       get 'resourcejs'
       get 'addlike'
       get 'addbookmark'
+      get 'removelike'
+      get 'removebookmark'
     end
   end
 
