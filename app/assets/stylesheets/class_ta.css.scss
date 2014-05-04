@@ -30,6 +30,10 @@ h1, h2, h3 {
 	/*overflow: hidden;*/
 }
 
+#cp-menu {
+	padding: 10px;
+}
+
 #cp-results {
 	width: 400px;
 	height: 100%;
@@ -39,6 +43,7 @@ h1, h2, h3 {
 	padding: 10px;
 	border-radius: 3px;
 	position: relative;
+	font-family: Gandhi Sans;
 }
 	#cp-searchOverlay {
 		pointer-events: none;
@@ -66,18 +71,6 @@ h1, h2, h3 {
 	}
 	#cp-filterBtn {
 		padding: 10px;
-	}
-	#cp-topRatedBtn {
-		width: 40%;
-		margin-left: 2px;
-		border-radius: 4px 0 0 4px;
-		outline: none;
-	}
-	#cp-newestBtn {
-		width: 40%;
-		margin-left: -4px;
-		border-radius: 0 4px 4px 0;
-		outline: none;
 	}
 
 	/* Twitter-like glowing box */

@@ -199,6 +199,36 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
     //     return true;
     //   }
     // }
-    $scope.results = resultsJSON;
+
+    // gets the resources for this class
+    var resourceList = [];
+    // $scope.results;
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/resourcejs",
+      data: { class_id: classid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      $scope.$apply(function() {
+        $scope.results = [];
+        resources = data;
+          var resourceKeys = Object.keys(resources);
+            for (var i = 0; i < resourceKeys.length; i++) {
+                var resourceType = resourceKeys[i].toString();
+                for (var j = 0; j < resources[resourceType].length; j++) {
+                    $scope.results.push(resources[resourceType][j])
+                }
+            }
+      });
+      
+      
+    });
+    
+    // $http.get('/class_ta/resourcejs').success(function(data) {
+    //     $scope.results = data;
+    // });
+    
     $scope.resultsFilter;
   }]);

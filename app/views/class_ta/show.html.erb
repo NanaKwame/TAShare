@@ -7,7 +7,7 @@
 				<span>9.00</span> 
 
 				<button id= "cp-uploadBtn" type="button" class="btn btn-default" title = "Upload" data-toggle="modal" data-target="#myModal" style="cursor: pointer">
-					<img id = "cp-uploadImg" src = "/assets/upload.png"/>
+					<img id = "cp-uploadImg" src = "/assets/uploadAlpha.png"/>
 
 				</button>
 
@@ -24,12 +24,14 @@
 		  </button>
 		  <ul id = "cp-menu" class="dropdown-menu" role="menu" ng-model="resultsFilter">
 		    <li>
-		    	<div style = "text-align: center;">
-		    		<button id = "cp-topRatedBtn" class = "btn btn-default">Top Rated</button>
-		    		<button id = "cp-NewestBtn" class = "btn btn-default">Newest</button>
+          <h4>Sort by:</h4>
+		    	<div class = "btn-group btn-group-justified" style = "text-align: center;">
+		    		<div class = "btn btn-default">Top Rated</div>
+		    		<div class = "btn btn-default">Newest</div>
 		    	</div>
 		    </li>
 		    <li class="divider"></li>
+        <h4>Filter By:</h4>
 		    <li class = "cp-filterOption" id = "cp-filterStarred"><a>Starred<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
 		    <li class = "cp-filterOption" id = "cp-filterVideos"><a value = "video">Videos<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
 		    <li class = "cp-filterOption" id = "cp-filterWebsites"><a>Websites<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
@@ -40,12 +42,12 @@
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: {type: resultsFilter}">
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch">
 				<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
 				<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-				<h2 class = "cp-result-title">{{result.name}}</h2>
+				<h2 class = "cp-result-title">{{result.title}}</h2>
 				<img class = "cp-result-icon" src = '/assets/videoIcon.png'/>
-				<h2 class = "cp-results-upvotes">{{result.age}}</h2>
+				<h2 class = "cp-results-upvotes">{{result.id}}</h2>
 			</div>
 		</div>
 	</div>
@@ -206,5 +208,8 @@
 
 
   <script type="text/javascript">
+  var classid = <%= @id%>;
+  var resources;
+  //this variable will have all the resouces
   cpBuild();
   </script>

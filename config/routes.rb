@@ -14,7 +14,11 @@ TAShare::Application.routes.draw do
     end
   end
 
-  resources :class_ta
+  resources :class_ta do
+    collection do
+      get 'resourcejs'
+    end
+  end
 
   resources :resources
   resources :audios, :controller => "resources", :type => "Audio"

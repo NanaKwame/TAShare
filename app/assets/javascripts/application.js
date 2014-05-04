@@ -18,6 +18,6 @@
 //= require select2
 //= require turbolinks
 
-//= require angular 
+//= require angular
 
 //= require_tree .

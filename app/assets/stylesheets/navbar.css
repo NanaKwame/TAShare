@@ -24,6 +24,7 @@
 #navContainer {
 	margin: 10px;
 	overflow: hidden;
+	font-family: Gandhi Sans;
 }
 	#navLeft {
 		float: left;

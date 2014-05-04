@@ -6,4 +6,5 @@ class ClassTa < ActiveRecord::Base
 	has_many :notes
 	has_many :problems
 	has_many :vieweds
+	has_many :resources
 end
