@@ -24,6 +24,28 @@
        url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+@font-face{ 
+	font-family: 'GandhiSans';
+	src: url('GandhiSans/gandhisans-regular-webfont.eot');
+	src: url('GandhiSans/gandhisans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('GandhiSans/gandhisans-regular-webfont.woff') format('woff'),
+	     url('GandhiSans/gandhisans-regular-webfont.ttf') format('truetype'),
+	     url('GandhiSans/gandhisans-regular-webfont.svg#webfont') format('svg');
+}
+
+@font-face{ 
+		font-family: 'BebasNeueBold';
+		src: url('BebasNeueBold/bebasneue_bold-webfont.eot');
+		src: url('BebasNeueBold/bebasneue_bold-webfont.eot?#iefix') format('embedded-opentype'),
+		     url('BebasNeueBold/bebasneue_bold-webfont.woff') format('woff'),
+		     url('BebasNeueBold/bebasneue_bold-webfont.ttf') format('truetype'),
+		     url('BebasNeueBold/bebasneue_bold-webfont.svg#webfont') format('svg');
+	}
+
 html, body {
-	font-family: Gandhi Sans;
+	font-family: 'GandhiSans';
+}
+
+h1, h2, h3 {
+	font-family: 'BebasNeueBold';
 }

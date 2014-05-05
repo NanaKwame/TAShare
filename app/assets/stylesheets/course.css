@@ -5,7 +5,7 @@ html {
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	font-family: Gandhi Sans;
+	/*font-family: Gandhi Sans;*/
 }
 body {
 	/*background-color: black;*/
@@ -14,11 +14,31 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	font-family: Gandhi Sans;
+	/*font-family: Gandhi Sans;*/
 }
+
+html, body {
+	@font-face{ 
+		font-family: 'GandhiSans';
+		src: url('gandhisans-regular-webfont.eot');
+		src: url('gandhisans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		     url('gandhisans-regular-webfont.woff') format('woff'),
+		     url('gandhisans-regular-webfont.ttf') format('truetype'),
+		     url('gandhisans-regular-webfont.svg#webfont') format('svg');
+	}
+}
+
 h1, h2, h3 {
-	font-family: Bebas Neue Bold;
+	/*font-family: BebasNeueBold;*/
 	margin-top: 0px;
+	@font-face{ 
+		font-family: 'BebasNeueBold';
+		src: url('bebasneue_bold-webfont.eot');
+		src: url('bebasneue_bold-webfont.eot?#iefix') format('embedded-opentype'),
+		     url('bebasneue_bold-webfont.woff') format('woff'),
+		     url('bebasneue_bold-webfont.ttf') format('truetype'),
+		     url('bebasneue_bold-webfont.svg#webfont') format('svg');
+	}
 }
 
 

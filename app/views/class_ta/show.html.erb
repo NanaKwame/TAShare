@@ -53,7 +53,7 @@
             <span>+{{result.likes.length}}</span>
           </div>
         </div>
-				<img class = "cp-result-icon" ng-src = '{{result.img}}'/>
+				<a href = "http://{{result.link}}"><img class = "cp-result-icon" ng-src = '{{result.img}}'/></a>
 				
 			</div>
 		</div>
@@ -67,7 +67,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-          <h3 class="modal-title" id="myModalLabel">Upload Content</h3>
+          <h1 class="modal-title" id="myModalLabel">Upload Content</h1>
       </div>
       <div class="modal-body" id="um-content">
       	<div id="um-fileOpt">
