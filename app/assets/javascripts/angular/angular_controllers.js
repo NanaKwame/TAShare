@@ -3,6 +3,12 @@
 
 var angularControllers = angular.module('TAShareApp', []);
 
+var capitalize = function(string) {
+    var firstLetter = string[0].toUpperCase();
+    var restOfString = string.substring(1, string.length)
+    return firstLetter + restOfString;
+}
+
 angularControllers.controller('HomePageCtrl', ['$scope', '$http',
   function($scope, $http) {
     // $http.get('phones/phones.json').success(function(data) {
@@ -79,37 +85,61 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
           contentType: 'application/json',
           dataType: "json"
         }).done(function(data) {
-          console.log(data);
           for (var i = 0; i < data.length; i++) {
                 var thisResult = data[i];
                 var thisBookmarks = thisResult["bookmarks"];
                 var thisLikes = thisResult["likes"];
                 thisResult.bookmarked = false;
                 thisResult.liked = false;
-                console.log("thisBookmarks: ", thisBookmarks);
                 for (var j = 0; j < thisBookmarks.length; j++) {
-                    console.log("thisBookmarks[" + i + "]: ", thisBookmarks[i]);
                     if (thisBookmarks[j].user_id == userId) {
                         thisResult.bookmarked = true;
                     }
                 }
-
                 for (var j = 0; j < thisLikes.length; j++) {
                     if (thisLikes[j].user_id == userId) {
                         thisResult.liked = true;
                     }
                 }
           }
-          console.log(data);
           $scope.$apply(function() {
             $scope.results = data;
           });
+          console.log(data);
         });
         // $http.get('/class_ta/resourcejs').success(function(data) {
         //     $scope.results = data;
         // });
+
+        $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
         $scope.resultsOrder = "created_at";
-        $scope.resultsFilter;
+        $scope.filterCategories = {};
+
+        
+
+        $scope.updateFilterCategories = function(category) {
+            if (category in $scope.filterCategories) {
+                delete $scope.filterCategories[category];
+            } else {
+                $scope.filterCategories[category] = null;
+            }
+            console.log($scope.filterCategories);
+        }
+
+        $scope.resultsFilter = function(result) {
+            console.log(result.type);
+            console.log($scope.filterCategories);
+            console.log(result.type in $scope.filterCategories);
+            if (Object.keys($scope.filterCategories).length == 0) {
+                return true;
+            } else if (result.type in $scope.filterCategories) {
+                return true; 
+            } else if (result.bookmarked && "Starred" in $scope.filterCategories) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         $scope.changeSort = function(sortType) {
             $scope.resultsOrder = sortType;
