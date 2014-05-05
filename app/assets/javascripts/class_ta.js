@@ -86,13 +86,15 @@ var buildPreview;
       cpResults.height(cpContent.height() - (2*marginSize));
       cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize)).height(cpContent.height() - (2*marginSize));
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
-  });
 
-    console.log("contents width: ", umContents.width());
-    console.log("umFiles width: ", umFiles.width())
-    var totalwidthLeft = umContents.width() - umFiles.width();
-    console.log("total left: ", totalwidthLeft);
-    umInputs.css("width", totalwidthLeft-40);
+      if(umContents.width() < 480 ){
+      	console.log("Cool!");
+      	umContents.css("overflow", "auto");
+      }
+      else{
+      	umContents.css("overflow", "visible");
+      }
+  });
 
     $("#cp-menu").on("click", function() {
       $('.dropdown.keep-open').data('closable', false);
