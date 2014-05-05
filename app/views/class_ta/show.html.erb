@@ -99,6 +99,7 @@
             </div>
             <div class="form-group">
               <%= f.label "Class" , :class => 'control-label' %>
+              <br>
               <%= f.select(:class_ta_id, ClassTa.all.collect {|p| [ p.number, p.id ] }, :required=>:true)%>
             </div>
             <div class="form-group">

@@ -244,23 +244,26 @@ h1, h2, h3 {
 }
 
 #um-fileOpt{
-	width: 180px;
-	height: 100%;
+	width: 200px;
+	height: 50%;
 	background-color: rgba(255, 255, 255, 0.8);
 	float: left;
 	padding: 10px;
 	border-radius: 3px;
 	position: relative;
+	margin: 10px;
 }
 
 #um-inputs{
-	height: 100%;
-	width: 370px;
+	height: 50%;
+	width: 50%;
+	min-width: 100px;
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 0.8);
 	padding: 10px;
 	border-radius: 3px;
-	float: right;
+	margin: auto;
+	margin-left: 20px;
 }
 
 textarea {
