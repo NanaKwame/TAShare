@@ -94,36 +94,40 @@ h1, h2, h3 {
 				height: 30px;
 				margin-left: 10px;
 				float: left;
+				cursor: pointer;
 			}
 			.cp-result-title {
+				font-size: 14pt;
+				height: 26px;
+				overflow: hidden;
+			}
+			.cp-result-titleCont {
+				font-size: 12pt;
 				margin: 0;
-				height: 33px;
-				width: 200px;
+				/*height: 100%;*/
+				width: 190px;
 				text-overflow: ellipsis;
-				margin-top: 35px;
+				/*margin-top: 35px;*/
 				float: left;
 				overflow: hidden;
 				margin-left: 10px;
 				/*background-color: lightgrey;*/
 			}
-			.cp-result-titleCont {
-				float: left;
-				margin-left: 10px;
-				width: 200px;
-				text-overflow: ellipsis;
-				/*background-color: lightgrey;*/
-			}
 			.cp-result-icon {
-				height: 80px;
+				width: 80px;
 				margin-top: 10px;
 				margin-left:10px;
 				float: left;
 				cursor: pointer;
 			}
-			.cp-results-upvotes {
-				float: right;
-				margin-top: 35px;
-				margin-right: 10px;
+			.cp-result-date {
+				margin:0;
+			}
+			.cp-result-upvotes {
+				/*float: right;*/
+				margin: 0;
+				/*margin-top: -10px;*/
+				/*margin-right: 10px;*/
 			}
 
 	#cp-uploadOverlay {

@@ -27,28 +27,34 @@
 		    <li>
           <h4>Sort by:</h4>
 		    	<div class = "btn-group btn-group-justified" style = "text-align: center;">
-		    		<div class = "btn btn-default" ng-click="changeSort(upvotes)">Top Rated</div>
-		    		<div class = "btn btn-default" ng-click="changeSort(created_at)">Newest</div>
+		    		<div class = "btn btn-default" ng-click="changeSort('-likes.length')">Top Rated</div>
+		    		<div class = "btn btn-default" ng-click="changeSort('-created_at')">Newest</div>
 		    	</div>
 		    </li>
 		    <li class="divider"></li>
         <h4>Filter By:</h4>
-		    <li class = "cp-filterOption" id = "cp-filterStarred"><a>Starred<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterVideos"><a value = "video">Videos<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterWebsites"><a>Websites<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterAudio"><a>Audio<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterNotes"><a><option value = "note">Notes<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></option></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterProblems"><a>Problems<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-		    <li class = "cp-filterOption" id = "cp-filterOther"><a>Other<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
+		    <li ng-repeat = "category in categories" class = "cp-filterOption" id = "cp-filter{{category}}" ng-click = "updateFilterCategories(category)">
+          <a>{{category}}
+            <span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span>
+          </a>
+        </li>
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | orderBy: resultsOrder" id = "cp-result{{result.id}}">
-				<img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/>
-				<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-				<h2 class = "cp-result-title">{{result.title}}</h2>
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}">
+				<img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;">
+				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;">
+				<div class = "cp-result-titleCont">
+          <div class = "cp-result-title" title = "{{result.title}}"><span><b>{{result.title}}</b></span></div>
+          <div class = "cp-result-date">
+            <span>{{result.created_at | date}}</span>
+          </div>
+          <div class = "cp-result-date">
+            <span>+{{result.likes.length}}</span>
+          </div>
+        </div>
 				<img class = "cp-result-icon" ng-src = '{{result.img}}'/>
-				<h2 class = "cp-results-upvotes">{{result.upvotes}}</h2>
+				
 			</div>
 		</div>
 	</div>

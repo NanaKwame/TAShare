@@ -22,6 +22,7 @@ var buildPreview;
     var cpUploadOverlay = $("#cp-uploadOverlay");
     var cpTitleCont = $(".cp-result-titleCont");
     var cpNotice = $("#notice");
+    var cpIcon = $(".cp-result-icon")
 
     var umContents = $("#um-content");
     var umInputs = $("#um-inputs");
@@ -72,7 +73,8 @@ var buildPreview;
     cpUploadImg.height(50);
     cpUploadOverlay.height(cpUploadImg.height()).width(cpUploadImg.width());
     
-    cpTitleCont.css("margin-top", 35).height(33);
+    $(".cp-results-upvotes").css("margin", 0);
+    cpTitleCont.css("margin-top", (cpResult.height()/2) - (cpTitleCont.height()/2))
 
     // Responsive JS
     $(window).resize(function() {
@@ -105,7 +107,7 @@ var buildPreview;
         "hide.bs.dropdown":  function() { return $(this).data('closable'); }
     });
 
-    $(".cp-filterOption").on("click", function() {
+    $("body").on("click", ".cp-filterOption", function() {
       var checkMark = this.children[0].children[0];
       if ($(checkMark).css("display") == "none") {
         $(checkMark).css("display", "block");
@@ -169,42 +171,16 @@ var buildPreview;
     });
   }
 
-  removelike = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/removelike",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+  removelike = function() {
+    
   }
 
-  addbookmark = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/addbookmark",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+  showbookmark = function() {
+    
   }
-  removebookmark = function(resourceid) {
-    $.ajax({
-      type: "GET",
-      url: "/class_ta/removebookmark",
-      data: { resource_id: resourceid},
-      contentType: 'application/json',
-        dataType: "json"
-    })
-    .done(function( data) {
-      console.log(data);
-    });
+
+  hidebookmark = function() {
+    
   }
     
 }
