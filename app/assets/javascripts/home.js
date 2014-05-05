@@ -10,38 +10,41 @@
 		var hpNavbar = $("#navbar");
 		var hpColumn = $(".hp-column");
 		var hpClassInfo = $(".hp-classInfo");
+		var hpClassTitle = $(".hp-classTitle");
 
 		var marginSize = 10;
 		var paddingSize = 10;
 		var navbarHeight = hpNavbar.height() + marginSize;
 
+		
 		var windowHeight = $(window).height() - 2*marginSize;
-		var windowWidth = $(window).width() - 2*marginSize;
-
 		hpContent.css("margin-top", navbarHeight)
 			.height(windowHeight - navbarHeight - marginSize);
 
+		var windowWidth = $(window).width() - 2*marginSize;
+
 		//column width
-		hpColumn.width((windowWidth - 2*paddingSize)/3.0);
-		hpColumn.height(hpContent.height() - 2*paddingSize);
+		hpColumn.width(Math.floor((windowWidth - 2*paddingSize)/3.0));
+		hpColumn.height(Math.floor(hpContent.height() - 2*paddingSize));
 
-		//responsive JS
+		//Set Vertical Align for class titles
+		hpClassTitle.css("margin-top", (hpClassInfo.height() - hpClassTitle.height())/2 + "px");
+
+		//responsive page JS
+		var windowVar = $(window);
 		$(window).resize(function() {
-			var windowHeight = $(window).height() - 2*marginSize;
-			var windowWidth = $(window).width() - 2*marginSize;
-
+			var windowHeight = windowVar.height() - 2*marginSize;
 			hpContent.css("margin-top", navbarHeight)
 				.height(windowHeight - navbarHeight - marginSize);
+			
+			var windowWidth = windowVar.width() - 2*marginSize;
+			hpColumn.width(Math.floor((windowWidth - 2*paddingSize)/3.0));
+			hpColumn.height(Math.floor(hpContent.height() - 2*paddingSize));
 
-
-			hpColumn.width((windowWidth - 2*paddingSize)/3);
-			hpColumn.height(hpContent.height() - 2*paddingSize);
+			//Set Vertical Align for class titles
+			hpClassTitle.css("margin-top", (hpClassInfo.height() - hpClassTitle.height())/2 + "px");
+			
 		});
-
-
-		//var classInfoHeading = hpClassInfo.children().first();
-		//classInfoHeading.css("margin-top", (hpClassInfo.height() - classInfoHeading.height())/2 + "px");
-
 	}
 
 
