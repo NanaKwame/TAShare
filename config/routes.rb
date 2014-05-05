@@ -21,6 +21,7 @@ TAShare::Application.routes.draw do
       get 'addbookmark'
       get 'removelike'
       get 'removebookmark'
+      get 'removeresource'
     end
   end
 

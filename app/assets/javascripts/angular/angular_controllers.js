@@ -25,58 +25,58 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         // $scope.results;
 
         $scope.addlike = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/addlike",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/addlike",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
 
-          }
+        }
 
-          $scope.addbookmark = function(resourceid) {
-            console.log(resourceid);
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/addbookmark",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
-
-          $scope.removelike = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/removelike",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
+        $scope.addbookmark = function(resourceid) {
+          console.log(resourceid);
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/addbookmark",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
+        $scope.removelike = function(resourceid) {
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/removelike",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
+          
 
         $scope.removebookmark = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/removebookmark",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/removebookmark",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
 
         $.ajax({
           type: "GET",

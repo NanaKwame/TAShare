@@ -185,6 +185,19 @@ var buildPreview;
     
   }
 
+  removeresource = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/removeresource",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+  }
+
   $("body").on("click", "#cp-topRatedBtn", function() {
     if (!$("#cp-topRatedBtn").hasClass("cp-selected")) {
       $("#cp-topRatedBtn").addClass("cp-selected");
