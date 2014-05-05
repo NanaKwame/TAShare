@@ -112,7 +112,8 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         // });
 
         $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
-        $scope.resultsOrder = "-result.likes.length";
+        $scope.resultsOrder = "-likes.length";
+        console.log($scope.resultsOrder);
         $scope.filterCategories = {};
 
         
@@ -139,7 +140,9 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         }
 
         $scope.changeSort = function(sortType) {
+
             $scope.resultsOrder = sortType;
+            console.log($scope.resultsOrder);
         }
     }
 ]);

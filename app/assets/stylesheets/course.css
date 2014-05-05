@@ -120,6 +120,9 @@ h1, h2, h3 {
 				float: left;
 				cursor: pointer;
 			}
+			.cp-result-date {
+				margin:0;
+			}
 			.cp-result-upvotes {
 				/*float: right;*/
 				margin: 0;

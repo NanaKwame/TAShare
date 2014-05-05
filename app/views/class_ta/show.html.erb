@@ -27,8 +27,8 @@
 		    <li>
           <h4>Sort by:</h4>
 		    	<div class = "btn-group btn-group-justified" style = "text-align: center;">
-		    		<div class = "btn btn-default" ng-click="changeSort(result.likes.length)">Top Rated</div>
-		    		<div class = "btn btn-default" ng-click="changeSort(result.created_at)">Newest</div>
+		    		<div class = "btn btn-default" ng-click="changeSort('-likes.length')">Top Rated</div>
+		    		<div class = "btn btn-default" ng-click="changeSort('-created_at')">Newest</div>
 		    	</div>
 		    </li>
 		    <li class="divider"></li>
@@ -45,8 +45,13 @@
 				<img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;">
 				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;">
 				<div class = "cp-result-titleCont">
-          <div class = "cp-result-title"><span><b>{{result.title}}</b></span></div>
-          <div class = "cp-result-upvotes"><span>+{{result.likes.length}}</span></div>
+          <div class = "cp-result-title" title = "{{result.title}}"><span><b>{{result.title}}</b></span></div>
+          <div class = "cp-result-date">
+            <span>{{result.created_at | date}}</span>
+          </div>
+          <div class = "cp-result-date">
+            <span>+{{result.likes.length}}</span>
+          </div>
         </div>
 				<img class = "cp-result-icon" ng-src = '{{result.img}}'/>
 				

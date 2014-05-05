@@ -148,8 +148,17 @@ var buildPreview;
       allowClear: true
     });
 
-  addlike = function() {
-
+  addlike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/addlike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
   }
 
   removelike = function() {
