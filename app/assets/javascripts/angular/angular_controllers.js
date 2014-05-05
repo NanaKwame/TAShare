@@ -9,6 +9,17 @@ var capitalize = function(string) {
     return firstLetter + restOfString;
 }
 
+var getId = function(url) { // taken from stackOverflow
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
 angularControllers.controller('HomePageCtrl', ['$scope', '$http',
   function($scope, $http) {
     // $http.get('phones/phones.json').success(function(data) {
@@ -18,8 +29,8 @@ angularControllers.controller('HomePageCtrl', ['$scope', '$http',
     $scope.foo = 'bar';
   }]);
 
-angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
-    function($scope, $http) {
+angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
+    function($scope, $http, $sce) {
         // gets the resources for this class
         var resourceList = [];
         // $scope.results;
@@ -36,9 +47,9 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
               console.log(data);
             });
 
-          }
+        }
 
-          $scope.addbookmark = function(resourceid) {
+        $scope.addbookmark = function(resourceid) {
             console.log(resourceid);
             $.ajax({
               type: "GET",
@@ -50,9 +61,9 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             .done(function( data) {
               console.log(data);
             });
-          }
+        }
 
-          $scope.removelike = function(resourceid) {
+        $scope.removelike = function(resourceid) {
             $.ajax({
               type: "GET",
               url: "/class_ta/removelike",
@@ -63,7 +74,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             .done(function( data) {
               console.log(data);
             });
-          }
+        }
 
         $scope.removebookmark = function(resourceid) {
             $.ajax({
@@ -76,7 +87,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             .done(function( data) {
               console.log(data);
             });
-          }
+        }
 
         $.ajax({
           type: "GET",
@@ -104,19 +115,30 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
           }
           $scope.$apply(function() {
             $scope.results = data;
+            $scope.currentResult = data[0];
+            $scope.currentResultURL = $sce.trustAsResourceUrl('http://' + $scope.currentResult['link'] + '/embed');
+            console.log($scope.currentResultURL);
           });
           console.log(data);
         });
-        // $http.get('/class_ta/resourcejs').success(function(data) {
-        //     $scope.results = data;
-        // });
+
+        $scope.currentResult;
 
         $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
         $scope.resultsOrder = "-likes.length";
-        console.log($scope.resultsOrder);
         $scope.filterCategories = {};
-
+        $scope.selectedResultId = "";
         
+        $scope.setCurrentResult = function(result) {
+            $scope.currentResult = result;
+            if (result.type == "Video") {
+                var id = getId($scope.currentResult['link']);
+                $scope.currentResultURL = $sce.trustAsResourceUrl("//youtube.com/embed/" + id);
+            } else {
+                $scope.currentResultURL = $sce.trustAsResourceUrl($scope.currentResult['link']);
+            }
+            
+        }
 
         $scope.updateFilterCategories = function(category) {
             if (category in $scope.filterCategories) {

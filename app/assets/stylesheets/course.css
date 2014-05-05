@@ -17,30 +17,6 @@ body {
 	/*font-family: Gandhi Sans;*/
 }
 
-html, body {
-	@font-face{ 
-		font-family: 'GandhiSans';
-		src: url('gandhisans-regular-webfont.eot');
-		src: url('gandhisans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		     url('gandhisans-regular-webfont.woff') format('woff'),
-		     url('gandhisans-regular-webfont.ttf') format('truetype'),
-		     url('gandhisans-regular-webfont.svg#webfont') format('svg');
-	}
-}
-
-h1, h2, h3 {
-	/*font-family: BebasNeueBold;*/
-	margin-top: 0px;
-	@font-face{ 
-		font-family: 'BebasNeueBold';
-		src: url('bebasneue_bold-webfont.eot');
-		src: url('bebasneue_bold-webfont.eot?#iefix') format('embedded-opentype'),
-		     url('bebasneue_bold-webfont.woff') format('woff'),
-		     url('bebasneue_bold-webfont.ttf') format('truetype'),
-		     url('bebasneue_bold-webfont.svg#webfont') format('svg');
-	}
-}
-
 
 
 #cp-content {
@@ -151,11 +127,11 @@ h1, h2, h3 {
 				cursor: pointer;
 			}
 			.cp-result-date {
-				margin:0;
+				margin-bottom: 5px;
 			}
 			.cp-result-upvotes {
 				/*float: right;*/
-				margin: 0;
+				margin-bottom: 5px;
 				/*margin-top: -10px;*/
 				/*margin-right: 10px;*/
 			}
@@ -299,4 +275,9 @@ textarea {
 	left: 50%;
 	top: 50%;
 	text-align: center;
+}
+
+#cp-viewFrame {
+	width: 100%;
+	height: calc(100% - 200px);
 }

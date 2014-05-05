@@ -201,6 +201,7 @@ var buildPreview;
     }
   });
     
+  $("#cp-likeBtn").tooltip();
 }
 
 // # Place all the behaviors and hooks related to the matching controller here.
