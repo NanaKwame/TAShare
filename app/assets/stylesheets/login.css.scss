@@ -1,25 +1,45 @@
+.login-all{
+	width: 100%;
+	height: 100%;
+	background-image: url(login/study.jpg);
+}
+
 .login-signin{
-	margin-left: 730px;
+	float: right;
 	.login-signin-password{
 		width: 200px;
 		vertical-align: middle;
 		margin: 10px;
 		.login-signin-remember{
+			#user_remember_me{
+				margin-top: 5px;
+			}
+			label{
+				vertical-align: top;
+				margin-top: 2px;
+			}
 		}
 		input{
 			width: inherit;
 		}
 	}
 	.login-signin-submit{
-		vertical-align: middle;
+		vertical-align: top;
 		margin-right: 30px; 
-		margin: 10px;
+		margin-top: 10px;
+		color: #006dcc;
 	}
 	.login-signin-email{
 		width: 200px;
 		vertical-align: middle;
 		margin: 10px;
+		margin-top: 2px;
 		.login-signin-forgot{
+			margin-top: 3px;
+			a{
+				color: white !important;
+			}
+			
 		}
 		input{
 			width: inherit;
