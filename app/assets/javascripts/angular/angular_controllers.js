@@ -131,9 +131,22 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             if (Object.keys($scope.filterCategories).length == 0) {
                 return true;
             } else if (result.type in $scope.filterCategories) {
+                if ("Starred" in $scope.filterCategories) {
+                    if (!result.bookmarked) {
+                        return false;
+                    }
+                }
                 return true; 
             } else if (result.bookmarked && "Starred" in $scope.filterCategories) {
-                return true;
+                if (Object.keys($scope.filterCategories).length == 1) {
+                    return true;
+                } else { // there are other options
+                    if (!(result.type in $scope.filterCategories)) {
+                        return false;
+                    }
+                    return true
+                }
+                
             } else {
                 return false;
             }

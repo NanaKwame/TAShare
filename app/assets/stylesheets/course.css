@@ -49,6 +49,16 @@ h1, h2, h3 {
 			float: right;
 			margin-top: 10px;
 		}
+	.cp-selected {
+		background-color: rgba(81, 203, 238, 0.5);
+		/*box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
+
+	}
+	.cp-selected:hover {
+		background-color: rgba(81, 203, 238, 1);
+	}
 	#cp-search {
 		padding: 10px;
 		border: 1px solid #ccc;

@@ -172,6 +172,22 @@ var buildPreview;
   hidebookmark = function() {
     
   }
+
+  $("body").on("click", "#cp-topRatedBtn", function() {
+    if (!$("#cp-topRatedBtn").hasClass("cp-selected")) {
+      $("#cp-topRatedBtn").addClass("cp-selected");
+    }
+    if ($("#cp-newestBtn").hasClass("cp-selected")) {
+      $("#cp-newestBtn").removeClass("cp-selected");
+    }
+  }).on("click", "#cp-newestBtn", function() {
+    if (!$("#cp-newestBtn").hasClass("cp-selected")) {
+      $("#cp-newestBtn").addClass("cp-selected");
+    }
+    if ($("#cp-topRatedBtn").hasClass("cp-selected")) {
+      $("#cp-topRatedBtn").removeClass("cp-selected");
+    }
+  });
     
 }
 // # Place all the behaviors and hooks related to the matching controller here.
