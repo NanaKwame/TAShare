@@ -112,7 +112,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         // });
 
         $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
-        $scope.resultsOrder = "created_at";
+        $scope.resultsOrder = "-result.likes.length";
         $scope.filterCategories = {};
 
         
@@ -127,9 +127,6 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         }
 
         $scope.resultsFilter = function(result) {
-            console.log(result.type);
-            console.log($scope.filterCategories);
-            console.log(result.type in $scope.filterCategories);
             if (Object.keys($scope.filterCategories).length == 0) {
                 return true;
             } else if (result.type in $scope.filterCategories) {
