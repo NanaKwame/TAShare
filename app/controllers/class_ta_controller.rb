@@ -72,6 +72,16 @@ class ClassTaController < ApplicationController
     end
   end
 
+  def removeresource
+    resid = params[:resource_id]
+    Resource.where(:id => resid).destroy_all
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => {:status => "Deleted"} }
+        format.json { render :json => {:status => "Deleted"}}
+    end
+  end
+
   private
   #redirects user if they are not logged in
   def logged_in

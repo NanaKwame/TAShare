@@ -25,58 +25,58 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
         // $scope.results;
 
         $scope.addlike = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/addlike",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/addlike",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
 
-          }
+        }
 
-          $scope.addbookmark = function(resourceid) {
-            console.log(resourceid);
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/addbookmark",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
-
-          $scope.removelike = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/removelike",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
+        $scope.addbookmark = function(resourceid) {
+          console.log(resourceid);
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/addbookmark",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
+        $scope.removelike = function(resourceid) {
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/removelike",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
+          
 
         $scope.removebookmark = function(resourceid) {
-            $.ajax({
-              type: "GET",
-              url: "/class_ta/removebookmark",
-              data: { resource_id: resourceid},
-              contentType: 'application/json',
-                dataType: "json"
-            })
-            .done(function( data) {
-              console.log(data);
-            });
-          }
+          $.ajax({
+            type: "GET",
+            url: "/class_ta/removebookmark",
+            data: { resource_id: resourceid},
+            contentType: 'application/json',
+              dataType: "json"
+          })
+          .done(function( data) {
+            console.log(data);
+          });
+        }
 
         $.ajax({
           type: "GET",
@@ -131,9 +131,22 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
             if (Object.keys($scope.filterCategories).length == 0) {
                 return true;
             } else if (result.type in $scope.filterCategories) {
+                if ("Starred" in $scope.filterCategories) {
+                    if (!result.bookmarked) {
+                        return false;
+                    }
+                }
                 return true; 
             } else if (result.bookmarked && "Starred" in $scope.filterCategories) {
-                return true;
+                if (Object.keys($scope.filterCategories).length == 1) {
+                    return true;
+                } else { // there are other options
+                    if (!(result.type in $scope.filterCategories)) {
+                        return false;
+                    }
+                    return true
+                }
+                
             } else {
                 return false;
             }
