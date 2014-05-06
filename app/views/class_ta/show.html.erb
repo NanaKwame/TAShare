@@ -42,7 +42,7 @@
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}">
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}" results-directive>
         <div class = "cp-result-starCont">
   				
   				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;">

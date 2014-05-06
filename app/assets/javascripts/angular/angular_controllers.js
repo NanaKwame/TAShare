@@ -1,7 +1,16 @@
 /* Angular Controller */
 
 
-var angularControllers = angular.module('TAShareApp', []);
+var angularControllers = angular.module('TAShareApp', [])
+    .directive('resultsDirective', function() {
+        return function(scope, element, attrs) {
+            if (scope.$first) {
+                console.log(angular.element(element).children()[2]);
+                angular.element(element).addClass("cp-resultSelected").children()[2].click();
+                $(".cp-resultSelected").children()[2].click()
+            }
+        }
+    });
 
 var capitalize = function(string) {
     var firstLetter = string[0].toUpperCase();
@@ -115,7 +124,6 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
           }
           $scope.$apply(function() {
             $scope.results = data;
-            $scope.setCurrentResult(data[0]);
           });
           console.log(data);
         });
