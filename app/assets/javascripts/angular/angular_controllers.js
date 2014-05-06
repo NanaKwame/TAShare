@@ -9,6 +9,17 @@ var capitalize = function(string) {
     return firstLetter + restOfString;
 }
 
+var getId = function(url) { // taken from stackOverflow
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
 angularControllers.controller('HomePageCtrl', ['$scope', '$http',
   function($scope, $http) {
     // $http.get('phones/phones.json').success(function(data) {
@@ -18,64 +29,64 @@ angularControllers.controller('HomePageCtrl', ['$scope', '$http',
     $scope.foo = 'bar';
   }]);
 
-angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
-    function($scope, $http) {
+angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
+    function($scope, $http, $sce) {
         // gets the resources for this class
         var resourceList = [];
         // $scope.results;
 
         $scope.addlike = function(resourceid) {
-          $.ajax({
-            type: "GET",
-            url: "/class_ta/addlike",
-            data: { resource_id: resourceid},
-            contentType: 'application/json',
-              dataType: "json"
-          })
-          .done(function( data) {
-            console.log(data);
-          });
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/addlike",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
 
         }
 
         $scope.addbookmark = function(resourceid) {
-          console.log(resourceid);
-          $.ajax({
-            type: "GET",
-            url: "/class_ta/addbookmark",
-            data: { resource_id: resourceid},
-            contentType: 'application/json',
-              dataType: "json"
-          })
-          .done(function( data) {
-            console.log(data);
-          });
+            console.log(resourceid);
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/addbookmark",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
         }
+
         $scope.removelike = function(resourceid) {
-          $.ajax({
-            type: "GET",
-            url: "/class_ta/removelike",
-            data: { resource_id: resourceid},
-            contentType: 'application/json',
-              dataType: "json"
-          })
-          .done(function( data) {
-            console.log(data);
-          });
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/removelike",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
         }
-          
 
         $scope.removebookmark = function(resourceid) {
-          $.ajax({
-            type: "GET",
-            url: "/class_ta/removebookmark",
-            data: { resource_id: resourceid},
-            contentType: 'application/json',
-              dataType: "json"
-          })
-          .done(function( data) {
-            console.log(data);
-          });
+            $.ajax({
+              type: "GET",
+              url: "/class_ta/removebookmark",
+              data: { resource_id: resourceid},
+              contentType: 'application/json',
+                dataType: "json"
+            })
+            .done(function( data) {
+              console.log(data);
+            });
         }
 
         $.ajax({
@@ -104,19 +115,52 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http',
           }
           $scope.$apply(function() {
             $scope.results = data;
+            $scope.setCurrentResult(data[0]);
           });
           console.log(data);
         });
-        // $http.get('/class_ta/resourcejs').success(function(data) {
-        //     $scope.results = data;
-        // });
 
+        $scope.currentResult;
+        $scope.thisUser = userId;
         $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
         $scope.resultsOrder = "-likes.length";
-        console.log($scope.resultsOrder);
         $scope.filterCategories = {};
+        $scope.selectedResultId = "";
+        $scope.resourceToDelete;
 
+        $scope.removeFromDisplay = function(id) {
+            console.log(id);
+            for (var i = 0; i < $scope.results.length; i++) {
+                var result = $scope.results[i];
+                if (result['id'] == id) {
+                    
+                    $scope.results.splice(i, 1);
+                    $("#cp-deleteNotice").animate({"opacity": 1}, 300, function() {
+                        $("#cp-deleteNotice").animate({"opacity": 1}, 2000, function() {
+                            $("#cp-deleteNotice").animate({"opacity": 0}, 300, function() {
+                                
+                            });
+                        });
+                    });
+                }
+            }
+        }
+
+        $scope.setResourceToDelete = function(id) {
+            resourceToRemove = id;
+            $scope.resourceToDelete = id;
+        }
         
+        $scope.setCurrentResult = function(result) {
+            $scope.currentResult = result;
+            if (result.type == "Video") {
+                var id = getId($scope.currentResult['link']);
+                $scope.currentResultURL = $sce.trustAsResourceUrl("//youtube.com/embed/" + id);
+            } else {
+                $scope.currentResultURL = $sce.trustAsResourceUrl($scope.currentResult['link']);
+            }
+            
+        }
 
         $scope.updateFilterCategories = function(category) {
             if (category in $scope.filterCategories) {
