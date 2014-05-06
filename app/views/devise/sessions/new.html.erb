@@ -1,6 +1,7 @@
 <html>
 <div class="inlineb login-all">
-  <div id="navbar" style="height:65px;">
+  <%= image_tag("login/study.jpg", :class => "login-bckgd")%>
+  <div id="navbar" style="height:65px; min-width:1000px;">
     <div id = 'logo'><h1 style = 'margin-top: 10px; margin-left: 10px; font-size: 45px; font-family: BebasNeueBold'>TA-Share</h1></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login-signin"}) do |f| %>
 
@@ -77,4 +78,17 @@
 </div>
 
 </div>
+<script type="text/javascript">
+$(window).resize(function() {
+    var windowHeight = $(document).height();
+    var windowWidth = $(document).width();
+    $(".login-all").height(windowHeight);
+    // $().height();
+    $(".login-all").width(windowWidth);
+    // $().width();
+    
+});
+
+</script>
+
 </html>
