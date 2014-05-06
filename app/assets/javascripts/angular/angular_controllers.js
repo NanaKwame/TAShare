@@ -127,6 +127,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
         $scope.filterCategories = {};
         $scope.selectedResultId = "";
         $scope.resourceToDelete;
+        $scope.resourceToLike;
 
         $scope.removeFromDisplay = function(id) {
             console.log(id);
@@ -160,6 +161,8 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
                 $scope.currentResultURL = $sce.trustAsResourceUrl($scope.currentResult['link']);
             }
             
+            $scope.resourceToLike = result;
+            resourceToLike = result;
         }
 
         $scope.updateFilterCategories = function(category) {

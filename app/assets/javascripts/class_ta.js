@@ -171,8 +171,17 @@ var buildPreview;
     });
   }
 
-  removelike = function() {
-    
+  removelike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/removelike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
   }
 
   showbookmark = function() {
@@ -216,6 +225,13 @@ var buildPreview;
     
   $("#cp-likeBtn").tooltip();
   $(".deleteResource").tooltip();
+  $("#cp-likeBtnOutline").tooltip();
+  $("body").tooltip({
+    selector: '[id=cp-likeBtn]'
+  });
+  $("body").tooltip({
+    selector: '[class=deleteResource]'
+  });
 }
 
 // # Place all the behaviors and hooks related to the matching controller here.

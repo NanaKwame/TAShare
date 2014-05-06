@@ -69,9 +69,9 @@
         <h1 style = "display: inline-block; margin: 0">Description | </h1>
         <p style = "display: inline-block; font-size: 16pt;"><b>Link: </b><a href="{{currentResult.link}}">{{currentResult.link}}</a></p>
         <div style = "display: inline-block; float: right;">
-          <div id = "cp-likeCont" style = "position: relative; width: 40px; height: 40px;">
-            <img id = "cp-likeBtn" style = "position: absolute; height: 100%; cursor: pointer;" src="/assets/likeOutline.png" data-toggle="tooltip" data-placement="top" title="Like!">
-            <img style = "position: absolute; height: 100%; display: none" src="/assets/likeIcon.png">
+          <div id = "cp-likeCont" style = "position: relative; width: 40px; height: 40px; cursor: pointer;">
+            <img id = "cp-likeBtnOutline" style = "position: absolute; height: 100%;" src="/assets/likeOutline.png" data-toggle="tooltip" data-placement="top" title="Like!" ng-click="addlike(resourceToLike.id); resourceToLike.liked = true;">
+            <img id = "cp-likeBtn" style = "position: absolute; height: 100%" src="/assets/likeIcon.png" ng-if="resourceToLike.liked" data-toggle="tooltip" data-placement="top" title="Click to unlike" ng-click="removelike(resourceToLike.id); resourceToLike.liked = false">
           </div>
         </div>
         <div>
@@ -172,6 +172,7 @@
   var userId = <%= current_user.id %>;
   var resources;
   var resourceToRemove;
+  var resourceToLike;
   var addlike;
   var addbookmark;
   var removelike;
