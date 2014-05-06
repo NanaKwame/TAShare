@@ -130,7 +130,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
 
         $scope.currentResult;
         $scope.thisUser = userId;
-        $scope.categories = ["Starred", "Video", "Website", "Audio", "Note", "Problem", "Other"];
+        $scope.categories = ["Starred", "Video", "Website", "Audio", "Note"];
         $scope.resultsOrder = "-likes.length";
         $scope.filterCategories = {};
         $scope.selectedResultId = "";
@@ -161,21 +161,28 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
         }
         
         $scope.setCurrentResult = function(result) {
-            $scope.currentResult = result;
+            
             if (result.type == "Video") {
+                $scope.currentResult = result;
                 var id = getId($scope.currentResult['link']);
                 $scope.currentResultURL = $sce.trustAsResourceUrl("//youtube.com/embed/" + id);
+                $(".cp-resultSelected").removeClass("cp-resultSelected");
+                $("#" + result['id']).addClass("cp-resultSelected"); 
+                console.log("class added");
+            } else if (result.type == "Audio") {
+                console.log(result.id);
+                $($("#" + result.id).children()[2]).wrap('<a href=' + result["link"] + ' target="_blank"></a>');
+                $("#" + result.id).children()[2].click();
             } else {
+                $scope.currentResult = result;
                 $scope.currentResultURL = $sce.trustAsResourceUrl($scope.currentResult['link']);
+                $(".cp-resultSelected").removeClass("cp-resultSelected");
+                $("#" + result['id']).addClass("cp-resultSelected"); 
+                console.log("class added");
             }
             
             $scope.resourceToLike = result;
             resourceToLike = result;
-
-            $(".cp-resultSelected").removeClass("cp-resultSelected");
-            $("#" + result['id']).addClass("cp-resultSelected"); 
-            console.log("class added");
-
         }
 
         $scope.updateFilterCategories = function(category) {
