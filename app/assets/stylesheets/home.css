@@ -36,6 +36,7 @@ h1, h2, h3 {
 	border-radius: 3px;
 	position: relative;
 	overflow: hidden;
+	z-index: 1;
 }
 	.hp-column {
 		float: left;

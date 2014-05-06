@@ -86,7 +86,6 @@ var buildPreview;
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
 
       if(umContents.width() < 480 ){
-      	console.log("Cool!");
       	umContents.css("overflow", "auto");
       }
       else{
