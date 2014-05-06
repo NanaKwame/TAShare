@@ -292,3 +292,10 @@ textarea {
 	width: 100%;
 	height: calc(100% - 200px);
 }
+
+.cp-resultSelected {
+	border: 1px solid rgba(81, 203, 238, 1);
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}

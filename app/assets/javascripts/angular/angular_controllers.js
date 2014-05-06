@@ -163,6 +163,11 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
             
             $scope.resourceToLike = result;
             resourceToLike = result;
+
+            $(".cp-resultSelected").removeClass("cp-resultSelected");
+            $("#" + result['id']).addClass("cp-resultSelected"); 
+            console.log("class added");
+
         }
 
         $scope.updateFilterCategories = function(category) {
