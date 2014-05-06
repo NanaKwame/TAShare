@@ -1,9 +1,10 @@
 #navbar {
-	height: 80px;
+	height: 65px;
 	width: 100%;
 	position: fixed;
 	top: 0;
 	overflow: hidden;
+	z-index: 100;
 	
 	color: #ffffff;
 	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -29,38 +30,48 @@
 	#navLeft {
 		float: left;
 		/*background-color: lightgrey;*/
+		margin-left: 10px;
 		height: 100%;
 	}
 		#logo {
 			float: left;
-			margin-right: 20px;
+			margin-right: 25px;
 		}
 		#search {
 			border: 0;
 			border-radius: 5px;
-			margin-top: 10px;
+			margin-top: 5px;
+			margin-left: 20px;
 			padding: 10px;
 			font-weight: bold;
 			font-size: 14pt;
+			min-width: 150px;
+			max-width: 500px
 		}
 	#navRight {
 		float: right;
 		/*background-color: lightgrey;*/
-		height: 100%;
+		height: inherit;
+		margin-right: 0;
+		right:0;
+		position: fixed;
 		/*width: 400px;*/
+		/*overflow: auto;*/
 	}
 		#profPic {
-			height: 100%;
+			/*height: 90%;*/
 		}
 		#name {
 			display: inline-block;
-			font-size: 20pt;
+			font-size: 1.25em;
 			margin-left: 10px;
-			vertical-align: middle;
+			vertical-align: top;
+			margin-top: 15px;
 			font-family: BebasNeueBold;
 		}
 		#gear {
-			vertical-align: middle;
+			vertical-align: top;
+			margin-top: 11px;
 			margin-left: 20px;
-			font-size: 15pt;
+			font-size: 17pt;
 		}

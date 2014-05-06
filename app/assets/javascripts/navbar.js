@@ -1,6 +1,5 @@
-$(document).ready(function() {
-
-	// Styling JavaScript
+	var initNavBar = function(){
+			// Styling JavaScript
 	var navbar = $("#navbar");
 	var navCont = $("#navContainer");
 	var navLeft = $("#navLeft");
@@ -14,6 +13,7 @@ $(document).ready(function() {
 	var marginSize = 10;
 	var paddingSize = 10;
 	var navbarHeight = navbar.height() + marginSize;
+	var length = 0;
 
 	// console.log(navbarHeight);
 	var windowHeight = $(window).height() - (2*marginSize);
@@ -23,13 +23,22 @@ $(document).ready(function() {
 	profPic.height(navCont.height());
 
 	navRight.width(navbarHeight + name.width() + gear.width() + (2*marginSize));
+
 	navLeft.width(navCont.width() - navRight.width() - marginSize);
-	search.height(navCont.height() - (2*marginSize) - (2*paddingSize))
-		.width( navLeft.width() - (logo.width() + (2*marginSize) + (2*paddingSize)) - (2*marginSize) );
+
+	search.height(navCont.height() - (2*marginSize) - (paddingSize));
+	length = navLeft.width() - (logo.width() + (2*marginSize) + (2*paddingSize)) - (2*marginSize);
+	search.width( navLeft.width() - (logo.width() + (2*marginSize) + (2*paddingSize)) - (2*marginSize) );
+
 	$(window).resize(function() {
 		navLeft.width(navCont.width() - navRight.width() - marginSize);
-		search.width( navLeft.width() - (logo.width() + (2*marginSize) + (2*paddingSize)) - (2*marginSize) );
+		search.width( navLeft.width() - (logo.width() + (2*marginSize) + (2*paddingSize)) - (2*marginSize) -45);
 	});
 
 	$("#divPusher").height(navbar.height() + marginSize);
+
+	}
+
+$(document).ready(function() {
+	initNavBar();
 });
