@@ -32,8 +32,17 @@
       </div>
         <!-- <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
         <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span> -->
-        <select id = "search">
-          <option ng-repeat = "class in classes">{{class.name}}</option>
+        <select id = "search" style = "border: 0;
+      border-radius: 5px;
+      margin-top: 5px;
+      margin-left: 20px;
+      padding: 10px;
+      font-size: 14pt;
+      min-width: 150px;
+      max-width: 500px;
+      color: black;
+      height: 40px;">
+          <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
         </select>
       </div>
       <div id = 'navRight'>

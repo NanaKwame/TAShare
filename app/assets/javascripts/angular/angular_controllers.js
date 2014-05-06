@@ -40,11 +40,11 @@ angularControllers.controller('HomePageCtrl', ['$scope', '$http',
 
 angularControllers.controller('NavbarCtrl', ['$scope', 
     function($scope) {
-        $scope.classes = [
-            {name: "Facebook", num: "1.00", link: "http://www.facebook.com"}, 
-            {name: "Google", num: "2.00", link: "http://www.google.com"}, 
-            {name: "YouTube", num: "3.00", link: "http://www.youtube.com"}
-        ]
+        $scope.classes = class_list;
+        // $scope.goToPage = function(link) {
+        //     console.log(link);
+        //     window.location.href = link;
+        // }
     }])
 
 angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
