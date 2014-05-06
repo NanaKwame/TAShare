@@ -1,11 +1,16 @@
 class ClassTaController < ApplicationController
+  require 'json'
   before_action :logged_in 
   def show
     @id = params[:id]
     @class = ClassTa.find(@id)
     @resource = Resource.new
     @resource.class_ta_id = @class.id
-
+    @class_list = []
+    ClassTa.all.each do |classTT|
+      obj = {:name => classTT.name.to_s, :number => classTT.number.to_s, :link  => url_for(:controller => "class_ta", :action => "show", :id => classTT.id).to_s}
+      @class_list.push(obj)
+    end
   end
 
   def resourcejs
