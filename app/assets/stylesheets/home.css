@@ -19,11 +19,9 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	font-family: Gandhi Sans;
 }
 
 h1, h2, h3 {
-	font-family: Bebas Neue Bold;
 	margin-top: 0px;
 }
 

@@ -8,9 +8,9 @@
     <script type="text/javascript" src="./app/assets/javascript/navbar.js"></script>
 
 </head>
-<body style = "font-family: GandhiSans">
+
+<body style = "font-family: GandhiSans; width:100%; height:100%;">
   <script>
-    var class_list = <%= raw(classjson().to_json)%>;
     initNavBar();
   </script>
 
@@ -22,6 +22,10 @@
     <% end %>
   </div> -->
   <% if current_user != nil%>
+
+  <script type="text/javascript">
+   var class_list = <%= raw(classjson().to_json)%>;
+  </script>
   <div id="navbar" ng-controller = "NavbarCtrl">
     <div id = 'navContainer'>
       <div id = 'navLeft'>
@@ -67,7 +71,7 @@
   </div>
   <%end%>
 
-  <div ng-view>
+  <div ng-view style="width:100%; height:100%;">
     <%= yield %>
   </div>
 
