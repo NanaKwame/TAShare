@@ -21,7 +21,7 @@
     <% end %>
   </div> -->
   <% if current_user != nil%>
-  <div id="navbar">
+  <div id="navbar" ng-controller = "NavbarCtrl">
     <div id = 'navContainer'>
       <div id = 'navLeft'>
         <div id='logo'>        
@@ -29,9 +29,11 @@
           <%= link_to "TA-Share", root_path %>
         </h1>
       </div>
-<!--         <div id = 'logo'><h1 style = 'margin-top: 10px; font-family: BebasNeueBold'>TA-Share</h1></div> -->
-        <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
-        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span>
+        <!-- <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
+        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span> -->
+        <select id = "search">
+          <option ng-repeat = "class in classes">{{class.name}}</option>
+        </select>
       </div>
       <div id = 'navRight'>
         <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block">

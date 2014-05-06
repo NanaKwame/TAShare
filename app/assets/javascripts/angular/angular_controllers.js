@@ -38,6 +38,15 @@ angularControllers.controller('HomePageCtrl', ['$scope', '$http',
     $scope.foo = 'bar';
   }]);
 
+angularControllers.controller('NavbarCtrl', ['$scope', 
+    function($scope) {
+        $scope.classes = [
+            {name: "Facebook", num: "1.00", link: "http://www.facebook.com"}, 
+            {name: "Google", num: "2.00", link: "http://www.google.com"}, 
+            {name: "YouTube", num: "3.00", link: "http://www.youtube.com"}
+        ]
+    }])
+
 angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
     function($scope, $http, $sce) {
         // gets the resources for this class

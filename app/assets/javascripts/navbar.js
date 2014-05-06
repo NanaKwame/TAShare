@@ -45,7 +45,8 @@
 	$(document).tooltip({
 		selector: '[id=logOut]'
 	})
-	console.log('swag');
+	
+	$("#search").select2();
 
 $(document).ready(function() {
 	initNavBar();
