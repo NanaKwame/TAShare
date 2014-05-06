@@ -30,14 +30,18 @@
         </h1>
       </div>
 <!--         <div id = 'logo'><h1 style = 'margin-top: 10px; font-family: BebasNeueBold'>TA-Share</h1></div> -->
-        <input type = 'text' id = 'search' placeholder = 'Search for Classes' style='color: black; font-size: 13.5px;'>
+        <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
+        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span>
       </div>
       <div id = 'navRight'>
-        <%= image_tag "profPic.png", {id: 'profPic', class: 'img-circle'} %>
+        <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block">
+          <%= image_tag "profPic.png", {id: 'profPic', class: 'img-circle', style: 'position: absolute; height: 100%;'} %>
+          <div id = "profImgOverlay" title = "Edit Profile Picture" data-placement = "bottom" data-toggle = "tooltip"><span class = "glyphicon glyphicon-edit" style = "margin-top: 13px; margin-left: 14px; font-size: 18px"></span></div>
+        </div>
         <div id = 'name'> <%= @current_user.email %></div>
 
-        <div class = "dropdown" style="display: inline-block;" id="gear">
-            <span class = "glyphicon glyphicon-cog" data-toggle="dropdown"></span>
+        <div class = "dropdown" style="display: inline-block;" id="gear" >
+            <span id = "logOut" class = "glyphicon glyphicon-log-out" data-toggle="dropdown"></span>
             <ul class="dropdown-menu pull-right" role="menu" > <!-- style = "margin-right: 10px;" -->
               <!-- !!!!!!!Part for editing settings -->
 <!--               <li role="presentation"><a role="menuitem" tabindex="-1" style = "cursor: pointer;" ><%= link_to 'Account Settings', edit_user_registration_path %></a></li> -->

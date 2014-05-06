@@ -39,6 +39,14 @@
 
 	}
 
+	$(document).tooltip({
+	    selector: '[id=profImgOverlay]'
+	 });
+	$(document).tooltip({
+		selector: '[id=logOut]'
+	})
+	console.log('swag');
+
 $(document).ready(function() {
 	initNavBar();
 });

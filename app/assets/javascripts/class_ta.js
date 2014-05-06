@@ -3,7 +3,6 @@ var buildPreview;
 
 // var starClick;
   var cpBuild = function() {
-    console.log("building other")
     // Styling JavaScript
     var cpContent = $("#cp-content");
     var cpResults = $("#cp-results");
