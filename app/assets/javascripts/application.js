@@ -17,7 +17,5 @@
 //= require handlebars
 //= require select2
 //= require turbolinks
-
 //= require angular
-
 //= require_tree .

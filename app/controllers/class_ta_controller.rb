@@ -1,11 +1,11 @@
 class ClassTaController < ApplicationController
+  require 'json'
   before_action :logged_in 
   def show
     @id = params[:id]
     @class = ClassTa.find(@id)
     @resource = Resource.new
     @resource.class_ta_id = @class.id
-
   end
 
   def resourcejs

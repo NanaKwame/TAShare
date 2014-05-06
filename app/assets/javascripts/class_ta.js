@@ -3,7 +3,6 @@ var buildPreview;
 
 // var starClick;
   var cpBuild = function() {
-    console.log("building other")
     // Styling JavaScript
     var cpContent = $("#cp-content");
     var cpResults = $("#cp-results");
@@ -67,14 +66,12 @@ var buildPreview;
       .width((cpResults.width() - marginSize) / 2);
 
     cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
-
-    cpResultStar.css("margin-top", (cpResult.height() - cpResultStar.height()) / 2);
     
     cpUploadImg.height(50);
     cpUploadOverlay.height(cpUploadImg.height()).width(cpUploadImg.width());
     
     $(".cp-results-upvotes").css("margin", 0);
-    cpTitleCont.css("margin-top", (cpResult.height()/2) - (cpTitleCont.height()/2))
+    // cpTitleCont.css("margin-top", (cpResult.height()/2) - (cpTitleCont.height()/2))
 
     // Responsive JS
     $(window).resize(function() {
@@ -88,7 +85,6 @@ var buildPreview;
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
 
       if(umContents.width() < 480 ){
-      	console.log("Cool!");
       	umContents.css("overflow", "auto");
       }
       else{
@@ -173,8 +169,17 @@ var buildPreview;
     });
   }
 
-  removelike = function() {
-    
+  removelike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/removelike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
   }
 
   showbookmark = function() {
@@ -196,6 +201,8 @@ var buildPreview;
     .done(function( data) {
       console.log(data);
     });
+
+    // location.reload();
   }
 
   $("body").on("click", "#cp-topRatedBtn", function() {
@@ -214,6 +221,15 @@ var buildPreview;
     }
   });
     
+  $("#cp-likeBtn").tooltip();
+  $(".deleteResource").tooltip();
+  $("#cp-likeBtnOutline").tooltip();
+  $("body").tooltip({
+    selector: '[id=cp-likeBtn]'
+  });
+  $("body").tooltip({
+    selector: '[class=deleteResource]'
+  });
 }
 
 // # Place all the behaviors and hooks related to the matching controller here.
