@@ -16,7 +16,7 @@
 //= require bootstrap.min
 //= require handlebars
 //= require select2
-//= require turbolinks
+// require turbolinks
 
 //= require angular
 
