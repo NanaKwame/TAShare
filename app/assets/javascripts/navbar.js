@@ -61,9 +61,9 @@
 				$(".glyphicon-search").css("display", "none");
 				var classLink = classDict[ui.item.value]
 				var loc = $(location).attr('href'); 
-				var startOld = loc.lastIndexOf("/"); //this the last section
-				var startNew = classLink.lastIndexOf("/")
-				var destination = loc.replace(loc.slice(startOld), classLink.slice(startNew));
+				var preroot = loc.split("class_ta/")[0];
+				var root = preroot.slice(0,(preroot.length-1));
+				var destination = root + classLink;
 				window.location = destination;
 		},
 			source: Object.keys(classDict),
