@@ -107,19 +107,15 @@
           <h1 class="modal-title" id="addClassLabel">Add Class</h1>
         </div>
       <div class="modal-body">
-        <%= form_tag(createClass_class_ta_path,method: "post") do |f| %>
+        <%= form_tag(createClass_class_ta_path,method: "post", :class => "add-class") do |f| %>
             <div class="form-group">
-              <%= label_tag :number %>
-              <%= text_field_tag :number%>
+              <%= text_field_tag :number, nil, :placeholder => "Class Number"%>
             </div>
             <div class="form-group">
-              <%= label_tag :name %>
-              <%= text_field_tag :name%>
+              <input id="nameT" name="name" placeholder="Class Name" type="text">
             </div>
             <div class="form-group">
-              <%= label_tag :description%>
-              <span></span>
-              <%= text_area_tag :description%>
+              <%= text_area_tag :description, nil, :placeholder => "Class Description"%>
             </div>
 
             <div class="modal-footer">
