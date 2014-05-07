@@ -56,7 +56,7 @@
 		}
 
 		$('#search').autocomplete({
-			minLength: 3,
+			minLength: 2,
 			select: function(event, ui){
 				$(".glyphicon-search").css("display", "none");
 				var classLink = classDict[ui.item.value]
