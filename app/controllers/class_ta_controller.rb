@@ -88,7 +88,6 @@ class ClassTaController < ApplicationController
   end
 
   def addprofilepic
-    puts params.inspect
     current_user.update_attributes(:avatar => params[:avatar])
     redirect_to :back
   end
@@ -100,6 +99,11 @@ class ClassTaController < ApplicationController
         format.xml  { render :xml => {:status => "Added"} }
         format.json { render :json => {:status => "Added"}}
     end
+  end
+
+  def createClass
+    ClassTa.create(:number => params[:number], :name => params[:name],  :description => params[:description])
+    redirect_to :back
   end
 
   private
