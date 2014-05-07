@@ -82,6 +82,12 @@ class ClassTaController < ApplicationController
     end
   end
 
+  def addprofilepic
+    puts params.inspect
+    current_user.update_attributes(:avatar => params[:avatar])
+    redirect_to :back
+  end
+
   private
   #redirects user if they are not logged in
   def logged_in
