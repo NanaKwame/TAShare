@@ -22,8 +22,6 @@
 		navCont.height(navbarHeight - (3*marginSize));
 		profPic.height(navCont.height());
 
-		console.log("Heres info", name.width(), gear.width(), navbarHeight);
-
 		navRight.width(navbarHeight + name.width() + gear.width() + (2*marginSize));
 
 		navLeft.width(navCont.width() - navRight.width() - marginSize);
@@ -46,15 +44,29 @@
 			selector: '[id=logOut]'
 		});
 
+		var classDict = new Object();
+
+		for(var i=0; i < class_list.length; i= i+1){
+			var key = class_list[i].number + " " + class_list[i].name;
+			classDict[key] = class_list[i].link;
+		}
+
+		$('#search').autocomplete({
+			minLength: 2,
+			select: function(event, ui){
+				$(".glyphicon-search").css("display", "none");
+				var classLink = classDict[ui.item.value]
+				var loc = $(location).attr('href'); 
+				var preroot = loc.split("class_ta/")[0];
+				var root = preroot.slice(0,(preroot.length-1));
+				var destination = root + classLink;
+				window.location = destination;
+		},
+			source: Object.keys(classDict),
+		});
+
 	}
 
-
-	
-// var goToPage = function(link) {
-// 	console.log(link);
-// 	window.location.href = link;
-// }
-	
 
 $(document).ready(function() {
 	initNavBar();

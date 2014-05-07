@@ -23,6 +23,7 @@ TAShare::Application.routes.draw do
       get 'removeresource'
       post 'addprofilepic'
       get 'addenroll'
+      post 'createClass'
     end
   end
 

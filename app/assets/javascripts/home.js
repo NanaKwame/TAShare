@@ -55,6 +55,7 @@ var hpBuild = function() {
 	      console.log(data);
 	    });
 		}
+		
 
 	//Event listener for window resizing
 	$(window).resize(resizeFunc);

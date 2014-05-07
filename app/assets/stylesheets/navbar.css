@@ -30,6 +30,7 @@
 		/*background-color: lightgrey;*/
 		margin-left: 10px;
 		height: 100%;
+		overflow: hidden;
 	}
 		#logo {
 			float: left;
@@ -45,6 +46,7 @@
 			min-width: 150px;
 			max-width: 500px;
 			color: black;
+
 		}
 	#navRight {
 		float: right;
@@ -92,9 +94,10 @@
 			cursor: pointer;
 			display: inline-block; 
 			color: white;
-			margin-left: 3px;
+			margin-left: 25px;
 			font-size: 24px;
 			vertical-align: middle;
+			margin-bottom: 5px;
 		}
 		#addClass:hover{
 			color: #ccc;
