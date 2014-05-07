@@ -5,14 +5,14 @@
     <div id = 'logo'><h1 style = 'margin-top: 10px; margin-left: 10px; font-size: 45px; font-family: BebasNeueBold'>TA-Share</h1></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login-signin"}) do |f| %>
 
-      <div class="login-signin-email inlineb">
-        <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <div class ="login-signin-forgot inlineb">
-          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-        </div>
-      <% end -%>
+    <div class="login-signin-email inlineb">
+      <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <div class ="login-signin-forgot inlineb">
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
       </div>
+      <% end -%>
+    </div>
 
       <div class="login-signin-password inlineb">
         <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>

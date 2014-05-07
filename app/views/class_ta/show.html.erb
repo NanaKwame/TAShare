@@ -45,8 +45,8 @@
 			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}" results-directive>
         <div class = "cp-result-starCont">
   				
-  				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;">
-          <img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;">
+  				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;" data-toggle="tooltip" data-placement="top" title="Bookmark">
+          <img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;" data-toggle="tooltip" data-placement="top" title="Remove bookmark">
         </div>
 				<div class = "cp-result-titleCont">
           <div class = "cp-result-title" title = "{{result.title}}"><span><b>{{result.title}}</b></span></div>
@@ -57,7 +57,12 @@
             <span>&hearts;: {{result.likes.length}}</span>
           </div>
         </div>
-				<img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
+        <img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
+        <!-- <a href = "{{result.link}}" ng-if = "result.type == 'Audio'">
+				  <img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
+        </a>
+        <img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}' ng-if == "result.type != 'Audio'"/> -->
+
 				<span style = "margin-left: 10px; margin-top: 40px; cursor: pointer;" class="glyphicon glyphicon-trash deleteResource" ng-if = "thisUser == result.user_id" ng-click="setResourceToDelete(result.id)" data-toggle="modal" data-target="#deleteModal" title = "Delete" data-placement = "right" data-toggle = "tooltip"></span>
 			</div>
 		</div>

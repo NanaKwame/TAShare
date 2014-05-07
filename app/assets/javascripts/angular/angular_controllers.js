@@ -4,10 +4,24 @@
 var angularControllers = angular.module('TAShareApp', [])
     .directive('resultsDirective', function() {
         return function(scope, element, attrs) {
+
             if (scope.$first) {
                 console.log(angular.element(element).children()[2]);
                 angular.element(element).addClass("cp-resultSelected").children()[2].click();
                 $(".cp-resultSelected").children()[2].click()
+            }
+            var img = $(angular.element(element).children()[2]);
+            console.log(img.attr("src"));
+            if ($(angular.element(element).children()[2]).html() == '<img class="cp-result-icon" ng-click="setCurrentResult(result)" ng-src="/assets/audioIcon.png" src="/assets/audioIcon.png">') {
+                console.log('audio');
+            }
+
+            if (scope.$last) { // only execute after list populated
+                if (resourceToDisplay != -1) {
+                    console.log("resourceToDisplay: ", resourceToDisplay)
+                    scope.setCurrentResult(resourceToDisplay);
+                    $($("#" + resourceToDisplay.id).children()[2]).click();
+                }
             }
         }
     });
@@ -27,6 +41,25 @@ var getId = function(url) { // taken from stackOverflow
     } else {
         return 'error';
     }
+}
+
+var getUrlVars = function() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(
+        window.location.href.indexOf('?') + 1).split('&');
+    for ( var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+var getBookmarkId = function(name) {
+    if (!(name in getUrlVars())) {
+        return -1;
+    }
+    return getUrlVars()[name];
 }
 
 angularControllers.controller('HomePageCtrl', ['$scope', '$http',
@@ -133,9 +166,14 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
           }
           $scope.$apply(function() {
             $scope.results = data;
-            if (resourceToDisplay != -1) {
-                $scope.setCurrentResult(resourceToDisplay);
+
+            resourceToDisplayID = getBookmarkId('resource_id');
+            for (var i = 0; i < data.length; i++) {
+                if (data[i]['id'] == resourceToDisplayID) {
+                    resourceToDisplay = data[i];
+                }
             }
+            
           });
           console.log(data);
         });
@@ -174,25 +212,26 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
         
         $scope.setCurrentResult = function(result) {
             
+            $(".cp-resultSelected").removeClass("cp-resultSelected");
+            $("#" + result['id']).addClass("cp-resultSelected"); 
+
             if (result.type == "Video") {
+
                 $scope.currentResult = result;
                 var id = getId($scope.currentResult['link']);
                 $scope.currentResultURL = $sce.trustAsResourceUrl("//youtube.com/embed/" + id);
-                $(".cp-resultSelected").removeClass("cp-resultSelected");
-                $("#" + result['id']).addClass("cp-resultSelected"); 
+                
                 console.log("class added");
             } else if (result.type == "Audio") {
-                console.log(result.id);
-                $($("#" + result.id).children()[2]).wrap('<a href=' + result["link"] + ' target="_blank"></a>');
-                $("#" + result.id).children()[2].click();
+
             } else {
                 $scope.currentResult = result;
                 $scope.currentResultURL = $sce.trustAsResourceUrl($scope.currentResult['link']);
-                $(".cp-resultSelected").removeClass("cp-resultSelected");
-                $("#" + result['id']).addClass("cp-resultSelected"); 
+ 
                 console.log("class added");
             }
             
+
             $scope.resourceToLike = result;
             resourceToLike = result;
         }
