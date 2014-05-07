@@ -22,8 +22,6 @@
 		navCont.height(navbarHeight - (3*marginSize));
 		profPic.height(navCont.height());
 
-		console.log("Heres info", name.width(), gear.width(), navbarHeight);
-
 		navRight.width(navbarHeight + name.width() + gear.width() + (2*marginSize));
 
 		navLeft.width(navCont.width() - navRight.width() - marginSize);
@@ -46,8 +44,6 @@
 			selector: '[id=logOut]'
 		});
 
-		console.log(class_list);
-
 		var classDict = new Object();
 
 		for(var i=0; i < class_list.length; i= i+1){
@@ -56,11 +52,14 @@
 		}
 
 		$('#search').autocomplete({
-			minLength: 3,
+			minLength: 2,
 			select: function(event, ui){
 				$(".glyphicon-search").css("display", "none");
 				var classLink = classDict[ui.item.value]
-				var destination = "http://localhost:3000" + classLink;
+				var loc = $(location).attr('href'); 
+				var preroot = loc.split("class_ta/")[0];
+				var root = preroot.slice(0,(preroot.length-1));
+				var destination = root + classLink;
 				window.location = destination;
 		},
 			source: Object.keys(classDict),
@@ -71,6 +70,4 @@
 
 $(document).ready(function() {
 	initNavBar();
-	$("#search").select2({
-	});
 });
