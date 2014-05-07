@@ -22,7 +22,9 @@
 		navCont.height(navbarHeight - (3*marginSize));
 		profPic.height(navCont.height());
 
-		navRight.width(navbarHeight + name.width() + gear.width() + (2*marginSize)-24);
+		console.log("Heres info", name.width(), gear.width(), navbarHeight);
+
+		navRight.width(navbarHeight + name.width() + gear.width() + (2*marginSize));
 
 		navLeft.width(navCont.width() - navRight.width() - marginSize);
 

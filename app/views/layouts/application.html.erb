@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <script type="text/javascript" src="./app/assets/javascript/navbar.js"></script>
+    <!-- // <script type="text/javascript" src="./app/assets/javascript/navbar.js"></script> -->
 
 </head>
 
@@ -49,11 +49,10 @@
       height: 40px;">
           <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
         </select>
-        <div style="display:inline-block;">
+        <div style="display:inline-block;" id="addClassContainer">
           <div class="glyphicon glyphicon-plus-sign" id="addClass" data-toggle="modal" data-target="#addClassModal" style="cursor: pointer"></div>
         </div>
       </div>
-
 
       <div id = 'navRight'>
         <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block" data-toggle="modal" data-target="#picModal">
@@ -64,14 +63,13 @@
 
         <div class = "dropdown" style="display: inline-block;" id="gear" >
             <span id = "logOut" class = "glyphicon glyphicon-log-out" data-toggle="dropdown"></span>
-            <ul class="dropdown-menu pull-right" role="menu" > <!-- style = "margin-right: 10px;" -->
+            <ul class="dropdown-menu pull-right" role="menu" > 
               <!-- !!!!!!!Part for editing settings -->
 <!--               <li role="presentation"><a role="menuitem" tabindex="-1" style = "cursor: pointer;" ><%= link_to 'Account Settings', edit_user_registration_path %></a></li> -->
               <li id = "signOut" role="presentation">
                 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
               </li>
         </div>
-        <!-- <span style = 'cursor: pointer;' id = 'gear' class = 'glyphicon glyphicon-cog'></span> -->
       </div>
     </div>
   </div>
@@ -81,8 +79,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-<<<<<<< HEAD
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h1 class="modal-title" id="picModalLabel">Upload Profile Picture</h1>
         </div>
       <div class="modal-body" id="um-content">
@@ -96,12 +93,6 @@
               <%= submit_tag %>
             </div>
             <% end %>
-=======
-          <h1 class="modal-title" id="picModalLabel">Manage Profile Picture</h1>
-        </div>
-      <div class="modal-body">
->>>>>>> d8b1842750e7c25c0dc1e3489bca9e81b8751188
-      
       </div>
       </div>
     </div>
@@ -111,7 +102,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h1 class="modal-title" id="addClassLabel">Add Class</h1>
         </div>
       <div class="modal-body">
