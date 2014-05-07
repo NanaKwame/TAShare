@@ -38,6 +38,15 @@ angularControllers.controller('HomePageCtrl', ['$scope', '$http',
     $scope.foo = 'bar';
   }]);
 
+angularControllers.controller('NavbarCtrl', ['$scope', 
+    function($scope) {
+        $scope.classes = class_list;
+        // $scope.goToPage = function(link) {
+        //     console.log(link);
+        //     window.location.href = link;
+        // }
+    }])
+
 angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
     function($scope, $http, $sce) {
         // gets the resources for this class
