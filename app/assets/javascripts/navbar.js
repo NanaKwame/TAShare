@@ -60,7 +60,10 @@
 			select: function(event, ui){
 				$(".glyphicon-search").css("display", "none");
 				var classLink = classDict[ui.item.value]
-				var destination = "http://localhost:3000" + classLink;
+				var loc = $(location).attr('href'); 
+				var startOld = loc.lastIndexOf("/"); //this the last section
+				var startNew = classLink.lastIndexOf("/")
+				var destination = loc.replace(loc.slice(startOld), classLink.slice(startNew));
 				window.location = destination;
 		},
 			source: Object.keys(classDict),
