@@ -1,5 +1,6 @@
 class ClassTa < ActiveRecord::Base
-	has_many :users
+	has_many :enrollments
+	has_many :users, through: :enrollments
 	has_many :videos
 	has_many :websites
 	has_many :audios

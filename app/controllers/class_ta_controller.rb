@@ -89,6 +89,15 @@ class ClassTaController < ApplicationController
     redirect_to :back
   end
 
+  def addenroll
+    Enrollment.create(:user_id => params[:user_id],:class_ta_id => params[:class_ta_id])
+    respond_to do |format|
+        format.html  { render :nothing => true }
+        format.xml  { render :xml => {:status => "Added"} }
+        format.json { render :json => {:status => "Added"}}
+    end
+  end
+
   private
   #redirects user if they are not logged in
   def logged_in

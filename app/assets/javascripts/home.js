@@ -43,6 +43,19 @@ var hpBuild = function() {
 		hpClassTitle.css("margin-top", (hpClassInfo.height() - hpClassTitle.height())/2 + "px");
 	}
 
+	addenrollment = function(userid, classid) {
+		$.ajax({
+	      type: "GET",
+	      url: "/class_ta/addenroll",
+	      data: { user_id: userid, class_ta_id: classid},
+	      contentType: 'application/json',
+	        dataType: "json"
+	    })
+	    .done(function( data) {
+	      console.log(data);
+	    });
+		}
+
 	//Event listener for window resizing
 	$(window).resize(resizeFunc);
 

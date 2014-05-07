@@ -22,6 +22,7 @@ TAShare::Application.routes.draw do
       get 'removebookmark'
       get 'removeresource'
       post 'addprofilepic'
+      get 'addenroll'
     end
   end
 
