@@ -1,25 +1,54 @@
+.login-all{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,109,204,.25); /* 0.7 Opacity for black */
+	.login-bckgd{
+		z-index: -1;
+		width: inherit;
+		height: inherit;
+		position: absolute;
+	}
+}
+
 .login-signin{
-	margin-left: 730px;
+	float: right;
+	input{
+		height: 25px;
+		color: black;
+	}
 	.login-signin-password{
 		width: 200px;
 		vertical-align: middle;
 		margin: 10px;
 		.login-signin-remember{
+			#user_remember_me{
+				height: 13px;
+			}
+			label{
+				vertical-align: top;
+				margin-top: 2px;
+			}
 		}
 		input{
 			width: inherit;
 		}
 	}
 	.login-signin-submit{
-		vertical-align: middle;
+		vertical-align: top;
 		margin-right: 30px; 
-		margin: 10px;
+		margin-top: 10px;
+		color: #006dcc;
 	}
 	.login-signin-email{
 		width: 200px;
-		vertical-align: middle;
+		vertical-align: top;
 		margin: 10px;
 		.login-signin-forgot{
+			margin-top: 3px;
+			a{
+				color: white !important;
+			}
+			
 		}
 		input{
 			width: inherit;
@@ -32,22 +61,80 @@
 }
 .login-bottom{
 	vertical-align: middle;
-	padding-top: 200px;
+	background-color: rgba(0,109,204,.4);
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1140px;
+	margin-top: 10%;
+	border-radius: 30px;
 	.login-about{
-		width: 740px;
+		width: 700px;
 		height: 400px;
-		img{
-			width: inherit;
-			height: inherit;
-			border-radius: 20px;
+		text-align: center;
+		vertical-align: top;
+		color: white;
+
+		h1{
+			font-size: 50px;
+			font-weight: bolder;
+			line-height: 1;
+		}
+		ul{
+			margin-left: 40px;
+			li{
+				img{
+					margin-right: 5px;
+				}
+				text-align: left;
+				font-size: 30px;
+			}
 		}
 	}
 
 	.login-signup{
 		width: 400px;
 		vertical-align: top;
-		padding: 50px;
 		height: 400px;
 		text-align: center;
+		h1{
+			color: white;
+			font-size: 40px;
+		}
+		input{
+			height: 35px;
+		}
+		.signup-names{
+			input{
+				width: 138px;
+				margin: 10px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+		.signup-email{
+			input{
+				width: 300px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+		.signup-pwd{
+			input{
+				width: 300px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+		.signup-cnpwd{
+			input{
+				width: 300px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+		.signup-but{
+			color: #006dcc;
+		}
 	}
 }

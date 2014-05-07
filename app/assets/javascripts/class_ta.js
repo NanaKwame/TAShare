@@ -1,7 +1,8 @@
 var buildPreview;
   // CLASS_PAGE = {}; // we don't need this because of doucment.ready
+
+// var starClick;
   var cpBuild = function() {
-    console.log("building other")
     // Styling JavaScript
     var cpContent = $("#cp-content");
     var cpResults = $("#cp-results");
@@ -19,21 +20,41 @@ var buildPreview;
     var cpUploadImg = $("#cp-uploadImg");
     var cpUploadOverlay = $("#cp-uploadOverlay");
     var cpTitleCont = $(".cp-result-titleCont");
+    var cpNotice = $("#notice");
+    var cpIcon = $(".cp-result-icon")
+
+    var umContents = $("#um-content");
+    var umInputs = $("#um-inputs");
+    var umFiles = $("#um-fileOpt");
 
     var marginSize = 10;
     var paddingSize = 10;
     var navbarHeight = cpNavbar.height() + marginSize;
+    var noticeHeight = cpNotice.height();
 
     // console.log(navbarHeight);
     var windowHeight = $(window).height() - (2*marginSize);
     var windowWidth = $(window).width() - (2*marginSize);
     var resultsWidth = cpResults.width() + (2*marginSize);
 
-    cpContent.css("margin-top", navbarHeight)
-      .height(windowHeight - navbarHeight + marginSize);
+    // Make notice disappear if it has not content
+    if (cpNotice.children().html() == '') {
+      cpNotice.css("display", "none");
+      cpNotice.css("padding", 0);
+    } else {
+      cpNotice.animate({"opacity": 1}, 3000, function() {
+        cpNotice.animate({"opacity": 0}, 500, function() {
+          cpNotice.css("display", "none");
+        });
+      });
+    }
 
+    cpContent.css("margin-top", navbarHeight)
+      .height(windowHeight - navbarHeight + (marginSize));
+
+    cpResults.height(cpContent.height() - (2*marginSize));
     cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize))
-      .css("margin-left", marginSize);
+      .css("margin-left", marginSize).height(cpContent.height() - (2*marginSize));
 
     cpSearch.width(cpResults.width() - cpFilter.width() - (2*paddingSize) - marginSize);
 
@@ -41,27 +62,35 @@ var buildPreview;
 
     cpFilterBtn.height(cpSearch.height());
 
-    cpMenu.css("left", -cpSearch.width() - (2*paddingSize))
-      .width(cpResults.width() - marginSize);
+    cpMenu.css("right", 0)
+      .width((cpResults.width() - marginSize) / 2);
 
     cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
-
-    cpResultStar.css("margin-top", (cpResult.height() - cpResultStar.height()) / 2);
     
     cpUploadImg.height(50);
     cpUploadOverlay.height(cpUploadImg.height()).width(cpUploadImg.width());
     
-    cpTitleCont.css("margin-top", 35).height(33);
+    $(".cp-results-upvotes").css("margin", 0);
+    // cpTitleCont.css("margin-top", (cpResult.height()/2) - (cpTitleCont.height()/2))
+
     // Responsive JS
     $(window).resize(function() {
       var windowHeight = $(window).height() - (2*marginSize);
       var windowWidth = $(window).width() - (2*marginSize);
 
       // console.log("windowHeight: " + windowHeight + ", navbarHeight: " + navbarHeight + ", marginSize: " + marginSize);
-      cpContent.height(windowHeight - navbarHeight + marginSize);
-      cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize));
+      cpContent.height(windowHeight - navbarHeight + (marginSize));
+      cpResults.height(cpContent.height() - (2*marginSize));
+      cpViewer.width(cpContent.width() - cpResults.width() - marginSize - (4*paddingSize)).height(cpContent.height() - (2*marginSize));
       cpResultsDisplay.height(cpResults.height() - (cpClassTitle.height() + (2*marginSize)) - (cpSearch.height() + marginSize + (2*paddingSize)) - (2*marginSize));
-    });
+
+      if(umContents.width() < 480 ){
+      	umContents.css("overflow", "auto");
+      }
+      else{
+      	umContents.css("overflow", "visible");
+      }
+  });
 
     $("#cp-menu").on("click", function() {
       $('.dropdown.keep-open').data('closable', false);
@@ -76,7 +105,7 @@ var buildPreview;
         "hide.bs.dropdown":  function() { return $(this).data('closable'); }
     });
 
-    $(".cp-filterOption").on("click", function() {
+    $("body").on("click", ".cp-filterOption", function() {
       var checkMark = this.children[0].children[0];
       if ($(checkMark).css("display") == "none") {
         $(checkMark).css("display", "block");
@@ -109,13 +138,15 @@ var buildPreview;
       buildPreview($(this).attr("data-type"));
     });
 
-    $(".cp-result-starFilled").on("click", function() {
-      if ($(this).css("opacity") == 0) {
-        $(this).css("opacity", 1);
-      } else {
-        $(this).css("opacity", 0);
-      }
-    });
+    starClick = function() {
+      console.log(this);
+      console.log($(this));
+      // if ($("#" + id).css("opacity") == 0) { // not favorited
+      //   $("#" + id).css("opacity", 1);
+      // } else { // favorited
+      //   $("#" + id).css("opacity", 0);
+      // }
+    }
     $(".um-up-type").on("click", function() {
       var val = $(this).attr("data-type");
       $($("input#um-inp-type")[0]).val(val);
@@ -124,21 +155,83 @@ var buildPreview;
       width: "150px",
       allowClear: true
     });
-    
-    // gets the resources for this class
+
+  addlike = function(resourceid) {
     $.ajax({
       type: "GET",
-      url: "/class_ta/resourcejs",
-      data: { class_id: classid},
+      url: "/class_ta/addlike",
+      data: { resource_id: resourceid},
       contentType: 'application/json',
         dataType: "json"
     })
     .done(function( data) {
-      resources = data;
       console.log(data);
     });
+  }
+
+  removelike = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/removelike",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+  }
+
+  showbookmark = function() {
     
   }
+
+  hidebookmark = function() {
+    
+  }
+
+  removeresource = function(resourceid) {
+    $.ajax({
+      type: "GET",
+      url: "/class_ta/removeresource",
+      data: { resource_id: resourceid},
+      contentType: 'application/json',
+        dataType: "json"
+    })
+    .done(function( data) {
+      console.log(data);
+    });
+
+    // location.reload();
+  }
+
+  $("body").on("click", "#cp-topRatedBtn", function() {
+    if (!$("#cp-topRatedBtn").hasClass("cp-selected")) {
+      $("#cp-topRatedBtn").addClass("cp-selected");
+    }
+    if ($("#cp-newestBtn").hasClass("cp-selected")) {
+      $("#cp-newestBtn").removeClass("cp-selected");
+    }
+  }).on("click", "#cp-newestBtn", function() {
+    if (!$("#cp-newestBtn").hasClass("cp-selected")) {
+      $("#cp-newestBtn").addClass("cp-selected");
+    }
+    if ($("#cp-topRatedBtn").hasClass("cp-selected")) {
+      $("#cp-topRatedBtn").removeClass("cp-selected");
+    }
+  });
+    
+  $("#cp-likeBtn").tooltip();
+  $(".deleteResource").tooltip();
+  $("#cp-likeBtnOutline").tooltip();
+  $("body").tooltip({
+    selector: '[id=cp-likeBtn]'
+  });
+  $("body").tooltip({
+    selector: '[class=deleteResource]'
+  });
+}
+
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/

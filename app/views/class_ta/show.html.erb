@@ -1,249 +1,183 @@
-<html>
 
-	<body>
-    <p id="notice"><%= notice %></p>
-		<div id = "cp-content">
-			<div id = "cp-results">
-				<legend id = "cp-classTitle" style = "border-color: grey;">
-					<h1 style = "height: 50px; position: relative">
-						<span>9.00</span> 
 
-						<button id= "cp-uploadBtn" type="button" class="btn btn-default" title = "Upload" data-toggle="modal" data-target="#myModal" style="cursor: pointer">
-							<img id = "cp-uploadImg" src = "/assets/upload.png"/>
+<div id = "cp-content"  ng-controller = "ClassPageCtrl">
+  <div  class="alert alert-success cp-alert" id="notice"><h1 style = "margin: 0"><%= notice %></h1></div> <!-- DO NOT CHANGE STYLE OR H1 SYNTAX -->
+  <div  class="alert alert-info cp-alert" id="cp-deleteNotice"><h1 style = "margin: 0">Your resource has been deleted</h1></div> <!-- DO NOT CHANGE STYLE OR H1 SYNTAX -->
+	<div id = "cp-results">
+		<legend id = "cp-classTitle" style = "border-color: grey;">
+			<h1 style = "height: 50px; position: relative">
+				<span><%= @class.number%></span> 
 
-						</button>
+				<button id= "cp-uploadBtn" type="button" class="btn btn-default" title = "Upload" data-toggle="modal" data-target="#myModal" style="cursor: pointer">
+					<img id = "cp-uploadImg" src = "/assets/uploadAlpha.png"/>
 
-					</h1>
-					
-				</legend>
-				<div id = 'cp-searchOverlay'>
-					<span style = "margin-right: 15px;" class = "cp-icon glyphicon glyphicon-search"></span>
-				</div>
-				<input type = 'text' id = 'cp-search' placeholder = 'Search Class Results'>
-				<div id = "cp-filter" class="btn-group dropdown keep-open">
-				  <button id = "cp-filterBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				    Filter <span class="caret"></span>
-				  </button>
-				  <ul id = "cp-menu" class="dropdown-menu" role="menu">
-				    <li>
-				    	<div style = "text-align: center;">
-				    		<button id = "cp-topRatedBtn" class = "btn btn-default">Top Rated</button>
-				    		<button id = "cp-NewestBtn" class = "btn btn-default">Newest</button>
-				    	</div>
-				    </li>
-				    <li class="divider"></li>
-				    <li class = "cp-filterOption" id = "cp-filterStarred"><a>Starred<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterVideos"><a>Videos<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterWebsites"><a>Websites<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterAudio"><a>Audio<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterNotes"><a>Notes<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterProblems"><a>Problems<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				    <li class = "cp-filterOption" id = "cp-filterOther"><a>Other<span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span></a></li>
-				  </ul>
-				</div>
-				<div id = "cp-resultsDisplay">
-					<div class = "cp-result" data-type = "video">
-						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-						<h2 class = "cp-result-title">Video 1</h2>
-						<img class = "cp-result-icon" src = '/assets/videoIcon.png'/>
-						<h2 class = "cp-results-upvotes">+2123</h2>
-					</div>
-					<div class = "cp-result" data-type = "note">
-						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-						<h2 class = "cp-result-title">Note 1</h2>
-						<img class = "cp-result-icon" src = '/assets/noteIcon.png'/>
-						<h2 class = "cp-results-upvotes">+453</h2>
+				</button>
 
-					</div>
-					<div class = "cp-result" data-type = "audio">
-						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-						<h2 class = "cp-result-title">Audio 1</h2>
-						<img class = "cp-result-icon" src = '/assets/audioIcon.png'/>
-						<h2 class = "cp-results-upvotes">+113</h2>
-
-					</div>
-					<div class = "cp-result" data-type = "website">
-						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-						<h2 class = "cp-result-title">Website 1</h2>
-						<img class = "cp-result-icon" src = '/assets/websiteIcon.png'/>
-						<h2 class = "cp-results-upvotes">+50</h2>
-
-					</div>
-					<div class = "cp-result" data-type = "problems">
-						<img class = "cp-result-starFilled" src = '/assets/StarOutlineFilled.png'/>
-						<img class = "cp-result-star" src = '/assets/StarOutline.gif'/>
-						<h2 class = "cp-result-title">Problems 1</h2>
-						<img class = "cp-result-icon" src = '/assets/problemsIcon.jpg'/>
-						<h2 class = "cp-results-upvotes">+23</h2>
-
-					</div>
-
-				</div>
-			</div>
-			<script id="video-template" type="text/x-handlebars-template">
-        <div id="cp-video">
-          <iframe src="http://www.youtube.com/embed/Q0z-C8Ke2FQ?wmode=transparent" width="500" height="100%" style="display: inline-block;" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div id="cp-rbottom">
-          <div id="cp-rdes"> 
-          <p>
-          Knowing how to code is like knowing how to read and write was in medival times. You can certainly get along without it, but you do so by living in ignorance of many of the wonders around you. 
-          Learn about a new "superpower" that is not being taught in in 90% of US schools.
-          </p>
-          </div>
-          <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
-          </div>
-        </div>
-      </script>
-      <script id="note-template" type="text/x-handlebars-template">
-        <div id="cp-problem">
-          <img width="690" src="/assets/questionpdf.jpg">
-        </div>
-        <div id="cp-rbottom">
-          <div id="cp-rdes"> 
-          <p>
-          Knowing how to code is like knowing how to read and write was in medival times. You can certainly get along without it, but you do so by living in ignorance of many of the wonders around you. 
-          Learn about a new "superpower" that is not being taught in in 90% of US schools.
-          </p>
-          </div>
-          <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
-          </div>
-        </div>
-      </script>
-      <script id="audio-template" type="text/x-handlebars-template">
-        <div id="cp-audio">
-          <audio controls >
-            <source src="Teach.mp3" type="audio/mpeg">
-            <source src="Teach.ogg" type="audio/ogg">
-            <embed height="500" width="300" src="Teach.mp3">
-          </audio>
-        </div>
-        <div id="cp-rbottom">
-          <div id="cp-rdes"> 
-          <p>
-          Knowing how to code is like knowing how to read and write was in medival times. You can certainly get along without it, but you do so by living in ignorance of many of the wonders around you. 
-          Learn about a new "superpower" that is not being taught in in 90% of US schools.
-          </p>
-          </div>
-          <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
-          </div>
-        </div>
-      </script>
-      <script id="website-template" type="text/x-handlebars-template">
-        <div id="cp-website">
-          <object data=https://ask.metafilter.com/80858/How-to-teach-myself-computer-science width="700" height="100%"> <embed src=https://ask.metafilter.com/80858/How-to-teach-myself-computer-science width="700" height="100%"> </embed> Error: Embedded data could not be displayed. </object>
-        </div>
-        <div id="cp-rbottom">
-          <div id="cp-rdes"> 
-          <p>
-          Knowing how to code is like knowing how to read and write was in medival times. You can certainly get along without it, but you do so by living in ignorance of many of the wonders around you. 
-          Learn about a new "superpower" that is not being taught in in 90% of US schools.
-          </p>
-          </div>
-          <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
-          </div>
-        </div>
-      </script>
-      <script id="problem-template" type="text/x-handlebars-template">
-        <div id="cp-problem">
-          <img width="690" src="/assets/questionpdf.jpg">
-        </div>
-        <div id="cp-rbottom">
-          <div id="cp-rdes"> 
-          <p>
-          Knowing how to code is like knowing how to read and write was in medival times. You can certainly get along without it, but you do so by living in ignorance of many of the wonders around you. 
-          Learn about a new "superpower" that is not being taught in in 90% of US schools.
-          </p>
-          </div>
-          <div id="cp-rfeedb">
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/StarOutline.gif'/></button>
-            <button id = "cp-rfeedb-but"><img class = "cp-result-star" src = '/assets/like.gif'/></button>
-          </div>
-        </div>
-      </script>
-      <div id = "cp-viewer">
-      </div>
+			</h1>
+			
+		</legend>
+		<div id = 'cp-searchOverlay'>
+			<span style = "margin-right: 15px;" class = "cp-icon glyphicon glyphicon-search"></span>
 		</div>
-    <!-- Modal -->
-      <div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-              <h3 class="modal-title" id="myModalLabel">Upload Content</h3>
+		<input type = 'text' id = 'cp-search' placeholder = 'Search Class Results' ng-model = "resultsSearch">
+		<div id = "cp-filter" class="btn-group dropdown keep-open">
+		  <button id = "cp-filterBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		    <span class="caret"></span>
+		  </button>
+		  <ul id = "cp-menu" class="dropdown-menu" role="menu" ng-model="resultsFilter">
+		    <li>
+          <h4>Sort by:</h4>
+		    	<div class = "btn-group btn-group-justified" style = "text-align: center;">
+		    		<div class = "btn btn-default cp-selected" id = "cp-topRatedBtn" ng-click="changeSort('-likes.length')">Top Rated</div>
+		    		<div class = "btn btn-default" id = "cp-newestBtn" ng-click="changeSort('-created_at')">Newest</div>
+		    	</div>
+		    </li>
+		    <li class="divider"></li>
+        <h4>Filter By:</h4>
+		    <li ng-repeat = "category in categories" class = "cp-filterOption" id = "cp-filter{{category}}" ng-click = "updateFilterCategories(category)">
+          <a>{{category}}
+            <span style = "float: right; color: #5FCA54; display: none;" class = "glyphicon glyphicon-ok"></span>
+          </a>
+        </li>
+		  </ul>
+		</div>
+		<div id = "cp-resultsDisplay">
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}" results-directive>
+        <div class = "cp-result-starCont">
+  				
+  				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;">
+          <img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;">
+        </div>
+				<div class = "cp-result-titleCont">
+          <div class = "cp-result-title" title = "{{result.title}}"><span><b>{{result.title}}</b></span></div>
+          <div class = "cp-result-date">
+            <span>{{result.created_at | date}}</span>
           </div>
-          <div class="modal-body" id="um-content">
-          	<div id="um-fileOpt">
-          		<ul class="nav nav-pills nav-stacked">
-          			<li class="active"><a href="#" class="um-up-type" data-type ="Video" data-toggle="pill">Video</a></li>
-          			<li><a href="#" class="um-up-type" data-type ="Website" data-toggle="pill">Website</a></li>
-          			<li><a href="#" class="um-up-type" data-toggle="pill" data-type ="Audio">Audio</a></li>
-          			<li><a href="#"  data-type ="Note" class="um-up-type"data-toggle="pill">Text/Example</a></li>
-          		</ul>
-
-          	</div>
-
-            	<div id="um-inputs">
-                <%= form_for(@resource, :html => { :class => "form-horizontal", :role => "form"}) do |f| %>
-                <% if @resource.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
-
-                    <ul>
-                    <% @resource.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-                <div class="form-group">
-                  <%= f.label :title  , :class => 'control-label'%>
-                  <%= f.text_field :title, :required=>:true, :class => 'form-control', :id => "um-title", :type => "title" , :placeholder =>'Enter Title'%>
-                </div>
-                <div class="form-group">
-                  <%= f.label "Class" , :class => 'control-label' %>
-                  <%= f.select(:class_ta_id, ClassTa.all.collect {|p| [ p.number, p.id ] }, :required=>:true)%>
-                </div>
-                <div class="form-group">
-                  <%= f.label :link , :class => 'control-label' %>
-                  <%= f.text_field :link, :required=>:true, :class => 'form-control',:id => 'um-link',:type => "link", :placeholder =>'Enter Link'%>
-                </div>
-                <input id ="um-inp-type" type="hidden" name="resource[type]" value="Video" ></input>
-                <div class="form-group">
-                  <%= f.label :description , :class => 'control-label' %>
-                  <%= f.text_area :description, :required=>:true , :class => 'form-control', :id => 'um-descrip', :rows => '2', :placeholder =>'Enter Description'%>
-                </div>
-                
-                <div class="modal-footer">
-                  <%= f.submit :class=> "btn btn-primary btn-large"%>
-                </div>
-                <% end %>
-              
-
-            	</div>
-            </div>
-
+          <div class = "cp-result-date">
+            <span>&hearts;: {{result.likes.length}}</span>
           </div>
         </div>
+				<img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
+				<span style = "margin-left: 10px; margin-top: 40px; cursor: pointer;" class="glyphicon glyphicon-trash deleteResource" ng-if = "thisUser == result.class_ta_id" ng-click="setResourceToDelete(result.id)" data-toggle="modal" data-target="#deleteModal" title = "Delete" data-placement = "right" data-toggle = "tooltip"></span>
+			</div>
+		</div>
+	</div>
+  <div id = "cp-viewer">
+      <iframe id = "cp-viewFrame" ng-src="{{currentResultURL}}"></iframe>
+      <div style = "margin:10px; border-bottom: 1px solid black"></div>
+      <div style = "padding: 10px;">
+        <h1 style = "display: inline-block; margin: 0">Description | </h1>
+        <p style = "display: inline-block; font-size: 16pt; vertical-align: super"><b>Link: </b><a href="{{currentResult.link}}">{{currentResult.link}}</a></p>
+        <div style = "display: inline-block; float: right;">
+          <div id = "cp-likeCont" style = "position: relative; width: 40px; height: 40px; cursor: pointer;">
+            <img id = "cp-likeBtnOutline" style = "position: absolute; height: 100%;" src="/assets/likeOutline.png" data-toggle="tooltip" data-placement="top" title="Like!" ng-click="addlike(resourceToLike.id); resourceToLike.liked = true;">
+            <img id = "cp-likeBtn" style = "position: absolute; height: 100%" src="/assets/likeIcon.png" ng-if="resourceToLike.liked" data-toggle="tooltip" data-placement="top" title="Click to unlike" ng-click="removelike(resourceToLike.id); resourceToLike.liked = false">
+          </div>
+        </div>
+        <div>
+          {{currentResult.description}}
+        </div>
       </div>
+  </div>
 
-  </body>
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title">Confirm Deletion</h1>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you would like to delete your resource?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" onClick = "removeresource(resourceToRemove)" ng-click = "removeFromDisplay(resourceToDelete)" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+<!-- Modal -->
+  <div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h1 class="modal-title" id="myModalLabel">Upload Content</h1>
+      </div>
+      <div class="modal-body" id="um-content">
+      	<div id="um-fileOpt">
+      		<ul class="nav nav-pills nav-stacked">
+      			<li class="active"><a href="#" class="um-up-type" data-type ="Video" data-toggle="pill">Video</a></li>
+      			<li><a href="#" class="um-up-type" data-type ="Website" data-toggle="pill">Website</a></li>
+      			<li><a href="#" class="um-up-type" data-toggle="pill" data-type ="Audio">Audio</a></li>
+      			<li><a href="#"  data-type ="Note" class="um-up-type"data-toggle="pill">Text/Example</a></li>
+      		</ul>
+
+      	</div>
+
+        	<div id="um-inputs">
+            <%= form_for(@resource, :html => { :class => "form-horizontal", :role => "form"}) do |f| %>
+            <% if @resource.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+                <ul>
+                <% @resource.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label :title  , :class => 'control-label'%>
+              <%= f.text_field :title, :required=>:true, :class => 'form-control', :id => "um-title", :type => "title" , :placeholder =>'Enter Title'%>
+            </div>
+            <div class="form-group">
+              <%= f.label "Class" , :class => 'control-label' %>
+              <br>
+              <%= f.select(:class_ta_id, ClassTa.all.collect {|p| [ p.number, p.id ] }, :required=>:true)%>
+            </div>
+            <div class="form-group">
+              <%= f.label :link , :class => 'control-label' %>
+              <span></span>
+              <%= f.text_field :link, :required=>:true, :class => 'form-control',:id => 'um-link',:type => "link", :placeholder =>'Enter Link'%>
+            </div>
+            <input id ="um-inp-type" type="hidden" name="resource[type]" value="Video" ></input>
+            <div class="form-group">
+              <%= f.label :description , :class => 'control-label' %>
+              <%= f.text_area :description, :required=>:true , :class => 'form-control', :id => 'um-descrip', :rows => '2', :placeholder =>'Enter Description'%>
+            </div>
+            
+            <div class="modal-footer">
+              <%= f.submit :class=> "btn btn-primary btn-large"%>
+            </div>
+            <% end %>
+          
+
+        	</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+
+
   <script type="text/javascript">
   var classid = <%= @id%>;
+  var userId = <%= current_user.id %>;
   var resources;
+  var resourceToRemove;
+  var resourceToLike;
+  var addlike;
+  var addbookmark;
+  var removelike;
+  var removebookmark;
+  var removeresource;
   //this variable will have all the resouces
   cpBuild();
   </script>
-</html>

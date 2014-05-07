@@ -30,6 +30,8 @@ var hpBuild = function() {
 		if (windowWidth < 720) {
 			hpColumn.width(windowWidth - 4*paddingSize);
 			hpColumn.css("height", "auto");
+			hpColumnList.css("height", "auto");
+			hpContent.css("height", "auto");
 		} else {
 			hpColumn.width(Math.floor((windowWidth - 2*paddingSize)/3.0) - 2*paddingSize);
 			hpColumn.height(Math.floor(hpContent.height() - 2*paddingSize));
