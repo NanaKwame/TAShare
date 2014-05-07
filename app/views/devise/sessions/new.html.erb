@@ -1,6 +1,6 @@
 <html>
 <div class="inlineb login-all">
-  <%= image_tag("login/study.jpg", :class => "login-bckgd")%>
+  <%= image_tag("login/study.png", :class => "login-bckgd")%>
   <div id="navbar" style="height:65px; min-width:1000px; position: absolute">
     <div id = 'logo'><h1 style = 'margin-top: 10px; margin-left: 10px; font-size: 45px; font-family: BebasNeueBold'>TA-Share</h1></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login-signin"}) do |f| %>
@@ -79,16 +79,19 @@
 
 </div>
 <script type="text/javascript">
-$(window).resize(function() {
-    var documentHeight = $(document).height();
+var landingResize = function() {
+      var documentHeight = $(document).height();
     var documentWidth = $(document).width();
     $(".login-all").height(documentHeight);
     // $().height();
     $(".login-all").width(documentWidth);
     $("#navbar").width(documentWidth);
     // $().width();
-    
-});
+}
+
+$(window).resize(landingResize);
+
+landingResize();
 
 </script>
 
