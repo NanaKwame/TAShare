@@ -224,12 +224,7 @@ var buildPreview;
   $("#cp-likeBtn").tooltip();
   $(".deleteResource").tooltip();
   $("#cp-likeBtnOutline").tooltip();
-  $("body").tooltip({
-    selector: '[id=cp-likeBtn]'
-  });
-  $("body").tooltip({
-    selector: '[class=deleteResource]'
-  });
+
 }
 
 // # Place all the behaviors and hooks related to the matching controller here.

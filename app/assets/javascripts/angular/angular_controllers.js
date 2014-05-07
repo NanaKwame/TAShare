@@ -10,19 +10,7 @@ var angularControllers = angular.module('TAShareApp', [])
                 angular.element(element).addClass("cp-resultSelected").children()[2].click();
                 $(".cp-resultSelected").children()[2].click()
             }
-            var img = $(angular.element(element).children()[2]);
-            console.log(img.attr("src"));
-            if ($(angular.element(element).children()[2]).html() == '<img class="cp-result-icon" ng-click="setCurrentResult(result)" ng-src="/assets/audioIcon.png" src="/assets/audioIcon.png">') {
-                console.log('audio');
-            }
 
-            if (scope.$last) { // only execute after list populated
-                if (resourceToDisplay != -1) {
-                    console.log("resourceToDisplay: ", resourceToDisplay)
-                    scope.setCurrentResult(resourceToDisplay);
-                    $($("#" + resourceToDisplay.id).children()[2]).click();
-                }
-            }
         }
     });
 
@@ -166,6 +154,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
           }
           $scope.$apply(function() {
             $scope.results = data;
+            resources = data;
 
             resourceToDisplayID = getBookmarkId('resource_id');
             for (var i = 0; i < data.length; i++) {
@@ -275,5 +264,40 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
             $scope.resultsOrder = sortType;
             console.log($scope.resultsOrder);
         }
+        $(window).load(function() {
+            var audio = false;
+            var link, result;
+            $(".cp-result").each(function() {
+                var thisID = $(this).attr("id");
+                if ($($(this).children()[2]).attr("src") == '/assets/audioIcon.png') {
+                    for (var i = 0; i < resources.length; i++) {
+                        if (resources[i]['id'] == thisID) {
+                            
+                            $($(this).children()[2]).wrap("<a id = 'cp-link-" + resources[i]['id'] + "' href=" + link + " target='_blank'></a>");
+                        }
+
+                        if (resources[i]['id'] == resourceToDisplay.id) {
+                            link = resources[i]['link'];
+                            result = resources[i];
+                        }
+                    }
+                    
+                }
+            })
+            if (resourceToDisplay != -1) {
+                console.log(resourceToDisplay.type);
+                if (resourceToDisplay.type == "Audio") {
+                    console.log(link);
+                    window.open(link, '_blank');
+                    $($("#" + resourceToDisplay.id).children()[2]).children()[0].click();
+                } else {
+                    $("#" + resourceToDisplay.id).children()[2].click();
+                }
+            }
+            $(".deleteResource").tooltip();
+            $(".cp-result-star").tooltip();
+            $(".cp-result-starFilled").tooltip();
+        })
     }
 ]);
+
