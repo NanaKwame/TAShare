@@ -6,7 +6,7 @@
 	<div id = "cp-results">
 		<legend id = "cp-classTitle" style = "border-color: grey;">
 			<h1 style = "height: 50px; position: relative">
-				<span><%= @class.number%></span> 
+				<span><%= (@class.number + ": "+@class.name).length > 25 ? (@class.number + ": "+@class.name)[0..20]+"..." : (@class.number + ": "+@class.name)%></span> 
 
 				<button id= "cp-uploadBtn" type="button" class="btn btn-default" title = "Upload" data-toggle="modal" data-target="#myModal" style="cursor: pointer">
 					<img id = "cp-uploadImg" src = "/assets/uploadAlpha.png"/>
