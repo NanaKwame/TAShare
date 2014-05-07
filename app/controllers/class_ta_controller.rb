@@ -7,6 +7,8 @@ class ClassTaController < ApplicationController
     @resource = Resource.new
     @resource.user_id = current_user.id
     puts @resource.inspect
+    Viewed.find_or_create_by(:user_id => current_user.id,:class_ta_id => @id)
+
   end
 
   def resourcejs
@@ -76,6 +78,8 @@ class ClassTaController < ApplicationController
   def removeresource
     resid = params[:resource_id]
     Resource.where(:id => resid).destroy_all
+    Bookmark.where(:resource_id => resid).destroy_all
+    Like.where(:resource_id => resid).destroy_all
     respond_to do |format|
         format.html  { render :nothing => true }
         format.xml  { render :xml => {:status => "Deleted"} }
