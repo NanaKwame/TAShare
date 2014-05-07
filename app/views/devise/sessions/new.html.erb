@@ -79,16 +79,19 @@
 
 </div>
 <script type="text/javascript">
-$(window).resize(function() {
-    var documentHeight = $(document).height();
+var landingResize = function() {
+      var documentHeight = $(document).height();
     var documentWidth = $(document).width();
     $(".login-all").height(documentHeight);
     // $().height();
     $(".login-all").width(documentWidth);
     $("#navbar").width(documentWidth);
     // $().width();
-    
-});
+}
+
+$(window).resize(landingResize);
+
+landingResize();
 
 </script>
 
