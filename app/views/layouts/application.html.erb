@@ -48,9 +48,14 @@
       height: 40px;">
           <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
         </select>
+        <div style="display:inline-block;">
+          <div class="glyphicon glyphicon-plus-sign" id="addClass" data-toggle="modal" data-target="#addClassModal" style="cursor: pointer"></div>
+        </div>
       </div>
+
+
       <div id = 'navRight'>
-        <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block" data-toggle="modal" data-target="#picModal" style="cursor: pointer">
+        <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block" data-toggle="modal" data-target="#picModal">
           <%= image_tag "profPic.png", {id: 'profPic', class: 'img-circle', style: 'position: absolute; height: 100%;'} %>
           <div id = "profImgOverlay" title = "Edit Profile Picture" data-placement = "bottom" data-toggle = "tooltip"><span class = "glyphicon glyphicon-edit" style = "margin-top: 13px; margin-left: 14px; font-size: 18px"></span></div>
         </div>
@@ -76,10 +81,24 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-          <h1 class="modal-title" id="picModalLabel">Upload Content</h1>
+          <h1 class="modal-title" id="picModalLabel">Manage Profile Picture</h1>
         </div>
-      <div class="modal-body" id="um-content">
+      <div class="modal-body">
       
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="addClassModal"  role="dialog" aria-labelledby="addClassLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h1 class="modal-title" id="addClassLabel">Add Class</h1>
+        </div>
+      <div class="modal-body">
+        
       </div>
       </div>
     </div>

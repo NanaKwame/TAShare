@@ -79,10 +79,31 @@
 		#logOut:hover {
 			color: #ccc;
 		}
+
 		#profImgOverlay {
 			position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0); opacity: 0; border-radius: 22.5px;
 		}
 		#profImgOverlay:hover {
+			background-color: rgba(0, 0, 0, 0.7);
+			opacity: 1;
+		}
+
+		#addClass{
+			cursor: pointer;
+			display: inline-block; 
+			color: white;
+			margin-left: 3px;
+			font-size: 24px;
+			vertical-align: middle;
+		}
+		#addClass:hover{
+			color: #ccc;
+		}
+
+		#classOverlay {
+			position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0); opacity: 0; border-radius: 22.5px;
+		}
+		#classOverlay:hover {
 			background-color: rgba(0, 0, 0, 0.7);
 			opacity: 1;
 		}
