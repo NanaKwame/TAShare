@@ -50,7 +50,7 @@
           <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
         </select>
         <div style="display:inline-block;" id="addClassContainer">
-          <div class="glyphicon glyphicon-plus-sign" id="addClass" data-toggle="modal" data-target="#addClassModal" style="cursor: pointer"></div>
+          <div class="glyphicon glyphicon-plus-sign" id="addClass" title="Add Classes" data-toggle="modal" data-target="#addClassModal" style="cursor: pointer"></div>
         </div>
       </div>
 
@@ -82,18 +82,22 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h1 class="modal-title" id="picModalLabel">Upload Profile Picture</h1>
         </div>
-      <div class="modal-body" id="um-content">
-        <%= form_tag(addprofilepic_class_ta_path,method: "post", :multipart => true) do |f| %>
+        <div class="modal-body" style="height:25%;">
+          <div class="center-body">
+          <%= form_tag(addprofilepic_class_ta_path,method: "post", :multipart => true) do |f| %>
+          
             <div class="form-group">
-              <%= label_tag :avatar %>
-              <%= file_field_tag :avatar, :required=>:true, :class => 'upload-image' %></div>
-              <div>
-            </div>         
-            <div class="modal-footer">
-              <%= submit_tag %>
-            </div>
-            <% end %>
-      </div>
+              <!-- <%= label_tag :avatar %> -->
+              <label class="control-label">Profile Picture</label>
+              <%= file_field_tag :avatar, :required=>:true, :class => 'upload-image' %>
+            </div>  
+          </div>     
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag nil, :class=>"btn btn-primary btn-large" %>
+        </div>
+        <% end %>
+      
       </div>
     </div>
   </div>
