@@ -23,10 +23,11 @@
     <% end %>
   </div> -->
   <% if current_user != nil%>
+
   <script type="text/javascript">
-  var class_list = <%= raw(classjson().to_json)%>;
+   var class_list = <%= raw(classjson().to_json)%>;
   </script>
-  <div id="navbar">
+  <div id="navbar" ng-controller = "NavbarCtrl">
     <div id = 'navContainer'>
       <div id = 'navLeft'>
         <div id='logo'>        
@@ -34,9 +35,20 @@
           <%= link_to "TA-Share", root_path %>
         </h1>
       </div>
-<!--         <div id = 'logo'><h1 style = 'margin-top: 10px; font-family: BebasNeueBold'>TA-Share</h1></div> -->
-        <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
-        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span>
+        <!-- <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
+        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span> -->
+        <select id = "search" style = "border: 0;
+      border-radius: 5px;
+      margin-top: 5px;
+      margin-left: 20px;
+      padding: 10px;
+      font-size: 14pt;
+      min-width: 150px;
+      max-width: 500px;
+      color: black;
+      height: 40px;">
+          <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
+        </select>
       </div>
       <div id = 'navRight'>
         <div style = "position: relative; width: 45px; height: 45px; cursor: pointer; display: inline-block" data-toggle="modal" data-target="#picModal" style="cursor: pointer">

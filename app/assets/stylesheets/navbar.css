@@ -23,7 +23,6 @@
 
 #navContainer {
 	margin: 10px;
-	overflow: hidden;
 	font-family: GandhiSans;
 }
 	#navLeft {
@@ -87,3 +86,17 @@
 			background-color: rgba(0, 0, 0, 0.7);
 			opacity: 1;
 		}
+
+.select2-container {
+	min-height: 40px;
+	max-height: 40px;
+	padding-top: 6px;
+}
+
+.select2-choice {
+	min-height: 40px;
+	max-height: 40px;
+	padding-top: 6px;
+	margin-top: -12px;
+	font-size: 20pt;
+}
