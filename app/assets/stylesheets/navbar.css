@@ -121,3 +121,18 @@
 	margin-top: -12px;
 	font-size: 20pt;
 }
+
+.upload-image {
+	border-radius: 0px;
+	background-color: transparent;
+	padding: 0;
+	font-family: GandhiSans;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+	border: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	box-shadow: 0 0 0 0 white;
+}

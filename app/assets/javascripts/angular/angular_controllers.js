@@ -134,7 +134,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
           $scope.$apply(function() {
             $scope.results = data;
             if (resourceToDisplay != -1) {
-                setCurrentResult(resourceToDisplay);
+                $scope.setCurrentResult(resourceToDisplay);
             }
           });
           console.log(data);
