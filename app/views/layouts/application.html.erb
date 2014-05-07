@@ -131,6 +131,27 @@
     </div>
   </div>
 
+
+  <div class="modal fade" id="addEnrollment"  role="dialog" aria-labelledby="addEnrollmentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title" id="picModalLabel">Add Your TA Class</h1>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label id = "addEnroll-label" for="addEnroll-class">Class:</label>
+            <input id = "addEnroll-class" name = "addEnroll-class" type = "text"> 
+          </div>
+        </div>        
+<!--         <div class="modal-footer">
+          <button type = "button" data-dismiss="modal" id = "addEnroll-button" class = "btn btn-primary btn-large" >Add Class</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
   <%end%>
 
   <div ng-view>

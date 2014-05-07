@@ -10,7 +10,7 @@ var hpBuild = function() {
 	var hpColumnTitle = $(".hp-column-title");
 	var hpColumnList = $(".hp-column-list");
 	var hpClassInfo = $(".hp-classInfo");
-	var hpClassTitle = $(".hp-classTitle");
+	var hpInfoTitle = $(".hp-infoTitle");
 
 	var marginSize = 10;
 	var paddingSize = 10;
@@ -39,9 +39,17 @@ var hpBuild = function() {
 			hpColumnList.height(hpColumn.height() - hpColumnTitle.height() - 20);
 		}
 
-		//Set Vertical Align for class titles
-		hpClassTitle.css("margin-top", (hpClassInfo.height() - hpClassTitle.height())/2 + "px");
+		//Set Vertical Align for info titles
+		for (var i = 0; i < hpInfoTitle.length; i++) {
+			$(hpInfoTitle[i]).css("margin-top", (hpClassInfo.height() - $(hpInfoTitle[i]).height())/2 + "px");
+		}
 	}
+
+	//Event listener for window resizing
+	$(window).resize(resizeFunc);
+
+	//Resize when loading page
+	resizeFunc();
 
 	addenrollment = function(userid, classid) {
 		$.ajax({
@@ -54,14 +62,8 @@ var hpBuild = function() {
 	    .done(function( data) {
 	      console.log(data);
 	    });
-		}
-		
+	}
 
-	//Event listener for window resizing
-	$(window).resize(resizeFunc);
-
-	//Resize when loading page
-	resizeFunc();
 }
 
 

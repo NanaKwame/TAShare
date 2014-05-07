@@ -3,18 +3,22 @@
 	<div class = "hp-column" id = "hp-ta-classes">
 		<legend class = "hp-column-title"><h2>My TA Classes</h2></legend>
 		<div class = "hp-column-list">
-			<a href = "/class_ta/1">
-				<div class = "hp-classInfo">
-					<h3 class = "hp-classTitle">9.00 Intro to Psychology</h3>
+			<% for class_ta in current_user.class_tas %>
+			<a href = "<%= '/class_ta/' + class_ta.id.to_s %>">
+				<div class = "hp-info hp-classInfo">
+					<% class_name = class_ta.name %>
+					<% if class_name.length > 25 %>
+						<% class_name = class_name[0, 25] + "..." %>
+					<% end %>
+					<h3 class = "hp-infoTitle"><%= class_ta.number + " - " + class_name %></h3>
 				</div>
 			</a>
+			<% end %>
 
 			<!-- Add class button -->
-			<a href = "/class_ta/1">
-				<div class = "hp-addClass">
-					<h3>+</h3>
-				</div>
-			</a>
+			<div class = "hp-addEnrollClass" data-toggle = "modal" data-target = "#addEnrollment">
+				<h3>+</h3>
+			</div>
 		</div>
 		<div class = "empty-div"></div>
 	</div>
@@ -24,9 +28,16 @@
 		<legend class = "hp-column-title"><h2>Bookmarks</h2></legend>
 		<div class = "hp-column-list">
 			<% for bookmark in current_user.bookmarks %>
-			<a href = "<%= '/class_ta/' + Resource.find(bookmark.resource_id).class_ta_id.to_s + '?resource_id=' + bookmark.resource_id.to_s %>">
-				<div class = "hp-classInfo">
-					<h3 class = "hp-classTitle">Bookmark <%= bookmark.resource_id %></h3>
+			<% resource = Resource.find(bookmark.resource_id) %>
+			<% class_id = resource.class_ta_id %>
+			<a href = "<%= '/class_ta/' + class_id.to_s + '?resource_id=' + bookmark.resource_id.to_s %>">
+				<div class = "hp-info">
+					<h3 class = "hp-infoTitle hp-bookmarkTitle"><%= resource.title %></h3>
+
+					<% if resource.type == "Video"%>
+					<% img_url = "/assets/videoIcon.png" %>
+					<img src = "<%= img_url %>" class = "hp-infoTitle hp-bookmarkIcon">
+					<% end %>
 				</div>
 			</a>
 			<% end %>
@@ -37,25 +48,58 @@
 	<!-- Viewed Classes column -->
 	<div class = "hp-column" id = "hp-viewed">
 		<legend class = "hp-column-title"><h2>Viewed Classes</h2></legend>
-		<a href = "/class_ta/1">
-			<div class = "hp-classInfo">
-				<h3 class = "hp-classTitle">9.00 Intro to Psychology</h3>
-			</div>
-		</a>
-		<a href = "#">
-			<div class = "hp-classInfo">
-				<h3>7.03 Genetics</h3>
-			</div>
-		</a>
-		<a href = "#">
-			<div class = "hp-classInfo">
-				<h3>16.00 Intro to AeroAstro</h3>
-			</div>
-		</a>
+		<div class = "hp-column-list">
+			<% for viewed in current_user.vieweds %>
+			<a href = "<%= '/class_ta/' + viewed.class_ta_id.to_s %>">
+				<div class = "hp-info hp-classInfo">
+					<% class_ta = ClassTa.find(viewed.class_ta_id) %>
+					<% class_name = class_ta.name %>
+					<% if class_name.length > 25 %>
+						<% class_name = class_name[0, 25] + "..." %>
+					<% end %>
+					<h3 class = "hp-infoTitle"><%= class_ta.number + " - " + class_name %></h3>
+				</div>
+			</a>
+			<% end %>
+		</div>
 		<div class = "empty-div"></div>
 	</div>
 </div>
 <script type="text/javascript">
 	var addenrollment;
+
+	var hpAddEnrollClass = $(".hp-addEnrollClass");
+	var hpAddEnrollInput = $("#addEnroll-class");
+	var addEnrollButton = $("#addEnroll-button");
+
+	//Make dictionary for class to id
+	var classNameToID = new Object();
+	var classNames = [];
+	for (var i = 0; i < class_list.length; i++) {
+		var class_name = class_list[i].number + " " + class_list[i].name;
+		classNames.push(class_name);
+		classNameToID[class_name] = class_list[i].id;
+	}
+
+	//Clear input if wanting to add new TA Class
+	hpAddEnrollClass.on("click", function(e) {
+		hpAddEnrollInput.val("");
+	});
+
+	//Autocomplete for adding enrollment modal
+	hpAddEnrollInput.autocomplete({
+		source: classNames,
+		appendTo: "#addEnrollment",
+		select: function(event, ui) {
+
+			var input_name = ui.item.value;
+			var class_id = classNameToID[input_name];
+			var user_id = <%= current_user.id %>;
+
+			addenrollment(user_id, class_id);
+
+			location.reload();
+		}
+	});
  	hpBuild();
 </script>

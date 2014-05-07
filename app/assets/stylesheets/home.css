@@ -57,40 +57,46 @@ h1, h2, h3 {
 		.hp-column-list {
 			overflow: auto;
 		}
-
-			.hp-classInfo {
+			.hp-info {
 				margin: 15px;
 				padding: 10px;
 				opacity: 0.7;
 				height: 80px;
 				border-radius: 4px;
 				color: #060606;
-				text-align: center;
 				background-color: rgba(255, 255, 255, 0.9);
 				box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
 			}
 
-			.hp-classInfo:hover {
+			.hp-info:hover {
 				background-color: #81bffc;
-				  text-decoration: none;
-				  background-position: 0 -15px;
-				  -webkit-transition: background-position 0.1s linear;
-				     -moz-transition: background-position 0.1s linear;
-				       -o-transition: background-position 0.1s linear;
-				          transition: background-position 0.1s linear;
 			}
 
-				.hp-classInfo > h3 {
+
+			.hp-classInfo {
+				text-align: center;
+			}
+				.hp-infoTitle {
 					display: inline-block;
 				}
 
-			.hp-addClass {
+				.hp-bookmarkTitle {
+					margin-left: 20px;
+				}
+
+				.hp-bookmarkIcon {
+					height: 30px;
+					float: right;
+					margin-right: 20px;
+				}
+
+			.hp-addEnrollClass {
 				margin: 15px;
 				color: #333333;
 				text-align: center;
 				text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 				vertical-align: middle;
-				background-color: #cccccc;
+				background-color: #ffffff;
 				background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
 				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
 				background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
@@ -112,17 +118,36 @@ h1, h2, h3 {
 				      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 			}
 
-				.hp-addClass > h3 {
+				.hp-addEnrollClass > h3 {
 					font-size: 60px;
 					margin: 0px;
 				}
 
-			.hp-addClass:hover {
+			.hp-addEnrollClass:hover {
 				background-color: #e6e6e6;
 				text-decoration: none;
+				cursor: pointer;
+				  background-position: 0 -15px;
+				  -webkit-transition: background-position 0.1s linear;
+				     -moz-transition: background-position 0.1s linear;
+				       -o-transition: background-position 0.1s linear;
+				          transition: background-position 0.1s linear;
+			}
+
+			#addEnroll-label {
+				font-size: 20px;
+				margin-right: 10px;
+			}
+
+			#addEnroll-class {
+				height: 28px;
+				width: 100%;
+
 			}
 
 		.empty-div {
 			height: 20px;
 			margin-top: 20px;
 		}
+
+
