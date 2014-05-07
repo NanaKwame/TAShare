@@ -5,7 +5,8 @@ class ClassTaController < ApplicationController
     @id = params[:id]
     @class = ClassTa.find(@id)
     @resource = Resource.new
-    @resource.class_ta_id = @class.id
+    @resource.user_id = current_user.id
+    puts @resource.inspect
   end
 
   def resourcejs
@@ -80,6 +81,12 @@ class ClassTaController < ApplicationController
         format.xml  { render :xml => {:status => "Deleted"} }
         format.json { render :json => {:status => "Deleted"}}
     end
+  end
+
+  def addprofilepic
+    puts params.inspect
+    current_user.update_attributes(:avatar => params[:avatar])
+    redirect_to :back
   end
 
   private

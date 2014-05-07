@@ -107,6 +107,10 @@
 			background-color: rgba(0, 0, 0, 0.7);
 			opacity: 1;
 		}
+.center-body{
+	margin-right: auto;
+	margin-left: auto;
+}
 
 .select2-container {
 	min-height: 40px;
