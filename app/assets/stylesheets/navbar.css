@@ -108,7 +108,7 @@
 			opacity: 1;
 		}
 
-.select2-container {
+/*.select2-container {
 	min-height: 40px;
 	max-height: 40px;
 	padding-top: 6px;
@@ -120,7 +120,7 @@
 	padding-top: 6px;
 	margin-top: -12px;
 	font-size: 20pt;
-}
+}*/
 
 .upload-image {
 	border-radius: 0px;

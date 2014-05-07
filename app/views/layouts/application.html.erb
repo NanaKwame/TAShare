@@ -10,7 +10,7 @@
 
 </head>
 
-<body style = "font-family: GandhiSans; width:100%; height:100%;">
+<body style = "font-family: GandhiSans;">
   <script>
     initNavBar();
   </script>
@@ -35,9 +35,9 @@
           <%= link_to "TA-Share", root_path %>
         </h1>
       </div>
-        <!-- <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
-        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span> -->
-        <select id = "search" style = "border: 0;
+        <input type = 'text' id = 'search' placeholder = 'Search for Classes'>
+        <span class="glyphicon glyphicon-search" style = "margin-left: -36px; color: black"></span>
+        <!-- <select id = "search" style = "border: 0;
       border-radius: 5px;
       margin-top: 5px;
       margin-left: 20px;
@@ -48,7 +48,7 @@
       color: black;
       height: 40px;">
           <option ng-repeat = "class in classes" ng-click = "goToPage(class.link)">{{class.number}}: {{class.name}}</option>
-        </select>
+        </select> -->
         <div style="display:inline-block;" id="addClassContainer">
           <div class="glyphicon glyphicon-plus-sign" id="addClass" data-toggle="modal" data-target="#addClassModal" style="cursor: pointer"></div>
         </div>
@@ -115,7 +115,7 @@
 
   <%end%>
 
-  <div ng-view style="width:100%; height:100%;">
+  <div ng-view>
     <%= yield %>
   </div>
 
