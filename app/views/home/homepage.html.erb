@@ -27,7 +27,7 @@
 	<div class = "hp-column" id = "hp-bookmarks">
 		<legend class = "hp-column-title"><h2>Bookmarks</h2></legend>
 		<div class = "hp-column-list">
-			<% for bookmark in current_user.bookmarks %>
+			<% for bookmark in current_user.bookmarks.reverse %>
 			<% resource = Resource.find(bookmark.resource_id) %>
 			<% class_id = resource.class_ta_id %>
 			<a href = "<%= '/class_ta/' + class_id.to_s + '?resource_id=' + bookmark.resource_id.to_s %>">
@@ -49,7 +49,7 @@
 	<div class = "hp-column" id = "hp-viewed">
 		<legend class = "hp-column-title"><h2>Viewed Classes</h2></legend>
 		<div class = "hp-column-list">
-			<% for viewed in current_user.vieweds %>
+			<% for viewed in current_user.vieweds.reverse %>
 			<a href = "<%= '/class_ta/' + viewed.class_ta_id.to_s %>">
 				<div class = "hp-info hp-classInfo">
 					<% class_ta = ClassTa.find(viewed.class_ta_id) %>
