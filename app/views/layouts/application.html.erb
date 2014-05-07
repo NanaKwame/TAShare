@@ -59,7 +59,7 @@
           <%= image_tag @current_user.avatar? ? @current_user.avatar.url(:thumb) : "profPic.png", {id: 'profPic', class: 'img-circle', style: 'position: absolute; height: 100%;'} %>
           <div id = "profImgOverlay" title = "Edit Profile Picture" data-placement = "bottom" data-toggle = "tooltip"><span class = "glyphicon glyphicon-edit" style = "margin-top: 13px; margin-left: 14px; font-size: 18px"></span></div>
         </div>
-        <div id = 'name'> <%= @current_user.email %></div>
+        <div id = 'name'> <%= @current_user.first_name %></div>
 
         <div class = "dropdown" style="display: inline-block;" id="gear" >
             <span id = "logOut" class = "glyphicon glyphicon-log-out" data-toggle="dropdown"></span>
