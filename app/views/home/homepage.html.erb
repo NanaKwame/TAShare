@@ -23,18 +23,13 @@
 	<div class = "hp-column" id = "hp-bookmarks">
 		<legend class = "hp-column-title"><h2>Bookmarks</h2></legend>
 		<div class = "hp-column-list">
-			<a href = "/class_ta/1">
+			<% for bookmark in current_user.bookmarks %>
+			<a href = "<%= '/class_ta/' + Resource.find(bookmark.resource_id).class_ta_id.to_s + '?resource_id=' + bookmark.resource_id.to_s %>">
 				<div class = "hp-classInfo">
-					<h3 class = "hp-classTitle">9.00 Intro to Psychology</h3>
+					<h3 class = "hp-classTitle">Bookmark <%= bookmark.resource_id %></h3>
 				</div>
 			</a>
-
-			<!-- Add class button -->
-			<a href = "/class_ta/1">
-				<div class = "hp-addClass">
-					<h3>+</h3>
-				</div>
-			</a>
+			<% end %>
 		</div>
 		<div class = "empty-div"></div>
 	</div>
