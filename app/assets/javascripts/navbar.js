@@ -46,15 +46,28 @@
 			selector: '[id=logOut]'
 		});
 
+		console.log(class_list);
+
+		var classDict = new Object();
+
+		for(var i=0; i < class_list.length; i= i+1){
+			var key = class_list[i].number + " " + class_list[i].name;
+			classDict[key] = class_list[i].link;
+		}
+
+		$('#search').autocomplete({
+			minLength: 3,
+			select: function(event, ui){
+				$(".glyphicon-search").css("display", "none");
+				var classLink = classDict[ui.item.value]
+				var destination = "http://localhost:3000" + classLink;
+				window.location = destination;
+		},
+			source: Object.keys(classDict),
+		});
+
 	}
 
-
-	
-// var goToPage = function(link) {
-// 	console.log(link);
-// 	window.location.href = link;
-// }
-	
 
 $(document).ready(function() {
 	initNavBar();
