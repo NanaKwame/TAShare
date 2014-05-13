@@ -12,6 +12,7 @@
 
 <body style = "font-family: GandhiSans;">
   <script>
+    var class_list = <%= raw(classjson().to_json)%>;
     initNavBar();
   </script>
 
@@ -23,10 +24,6 @@
     <% end %>
   </div> -->
   <% if current_user != nil%>
-
-  <script type="text/javascript">
-   var class_list = <%= raw(classjson().to_json)%>;
-  </script>
   <div id="navbar" ng-controller = "NavbarCtrl">
     <div id = 'navContainer'>
       <div id = 'navLeft'>

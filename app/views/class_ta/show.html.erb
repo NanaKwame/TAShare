@@ -42,10 +42,10 @@
 		  </ul>
 		</div>
 		<div id = "cp-resultsDisplay">
-			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" id = "{{result.id}}" results-directive>
+			<div class = "cp-result" ng-repeat = "result in results | filter: resultsSearch | filter: resultsFilter | orderBy: resultsOrder" ng-click = 'setCurrentResult(result)' id = "{{result.id}}" results-directive>
         <div class = "cp-result-starCont">
   				
-  				<img class = "cp-result-star" src = '/assets/StarOutline.gif' ng-click = "addbookmark(result.id); result.bookmarked = true;" data-toggle="tooltip" data-placement="top" title="Bookmark">
+  				<img class = "cp-result-star" src = '/assets/starOutline.png' ng-click = "addbookmark(result.id); result.bookmarked = true;" data-toggle="tooltip" data-placement="top" title="Bookmark">
           <img class = "cp-result-starFilled" ng-if = "result.bookmarked" src = '/assets/StarOutlineFilled.png'/ ng-click = "removebookmark(result.id); result.bookmarked = false;" data-toggle="tooltip" data-placement="top" title="Remove bookmark">
         </div>
 				<div class = "cp-result-titleCont">
@@ -54,10 +54,10 @@
             <span>{{result.created_at | date}}</span>
           </div>
           <div class = "cp-result-date">
-            <span>&hearts;: {{result.likes.length}}</span>
+            <span><span style = "color: #D82B2B">&hearts;</span>: {{result.likes.length}}</span>
           </div>
         </div>
-        <img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
+        <img class = "cp-result-icon" ng-src = '{{result.img}}'/>
         <!-- <a href = "{{result.link}}" ng-if = "result.type == 'Audio'">
 				  <img class = "cp-result-icon" ng-click = 'setCurrentResult(result)' ng-src = '{{result.img}}'/>
         </a>

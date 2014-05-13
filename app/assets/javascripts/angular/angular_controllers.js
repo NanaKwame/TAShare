@@ -1,14 +1,19 @@
 /* Angular Controller */
-
+$(".cp-resultSelected").on("click", function() {
+    console.log("clicked")
+})
 
 var angularControllers = angular.module('TAShareApp', [])
     .directive('resultsDirective', function() {
         return function(scope, element, attrs) {
-
+            console.log("element: ", element);
             if (scope.$first) {
-                console.log(angular.element(element).children()[2]);
-                angular.element(element).addClass("cp-resultSelected").children()[2].click();
-                $(".cp-resultSelected").children()[2].click()
+                element.attr("ng-click", "setCurrentResult(result)");
+                
+                element.click();
+                console.log("cpSelected", $(".cp-resultSelected"));
+            } else if (scope.$last) {
+                $(".cp-resultSelected").click();
             }
 
         }
@@ -200,7 +205,7 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
         }
         
         $scope.setCurrentResult = function(result) {
-            
+            console.log("setCurrentResult called")
             $(".cp-resultSelected").removeClass("cp-resultSelected");
             $("#" + result['id']).addClass("cp-resultSelected"); 
 
@@ -289,9 +294,9 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
                 if (resourceToDisplay.type == "Audio") {
                     console.log(link);
                     window.open(link, '_blank');
-                    $($("#" + resourceToDisplay.id).children()[2]).children()[0].click();
+                    $("#" + resourceToDisplay.id).click();
                 } else {
-                    $("#" + resourceToDisplay.id).children()[2].click();
+                    $("#" + resourceToDisplay.id).click();
                 }
             }
             $(".deleteResource").tooltip();
