@@ -146,6 +146,10 @@ angularControllers.controller('ClassPageCtrl', ['$scope', '$http', '$sce',
                 var thisLikes = thisResult["likes"];
                 thisResult.bookmarked = false;
                 thisResult.liked = false;
+                thisResult.mine =false;
+                if (thisResult.user_id === userId) {
+                    thisResult.mine = true;
+                };
                 for (var j = 0; j < thisBookmarks.length; j++) {
                     if (thisBookmarks[j].user_id == userId) {
                         thisResult.bookmarked = true;

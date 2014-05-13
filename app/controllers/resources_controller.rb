@@ -25,7 +25,6 @@ class ResourcesController < ApplicationController
   # POST /resources.json
   def create
     @resource = Resource.new(resource_params)
-    puts session[:return_to].inspect
     respond_to do |format|
       if @resource.save
         format.html { redirect_to :back, notice: 'Resource was successfully created.' }
