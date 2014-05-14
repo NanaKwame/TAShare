@@ -25,7 +25,7 @@
 
 	<!-- Bookmark column -->
 	<div class = "hp-column" id = "hp-bookmarks">
-		<legend class = "hp-column-title"><h2>Bookmarks</h2></legend>
+		<legend class = "hp-column-title"><h2>Starred Resources</h2></legend>
 		<div class = "hp-column-list">
 			<% for bookmark in current_user.bookmarks.reverse %>
 			<% resource = Resource.find(bookmark.resource_id) %>

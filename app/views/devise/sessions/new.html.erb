@@ -6,19 +6,19 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login-signin"}) do |f| %>
 
     <div class="login-signin-email inlineb">
-      <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
+      <%= f.email_field :email, autofocus: true, :placeholder => "Email", :tabindex => "1" %>
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
       <div class ="login-signin-forgot inlineb">
-        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <%= link_to "Forgot your password?", new_password_path(resource_name), :tabindex => "3" %><br />
       </div>
       <% end -%>
     </div>
 
       <div class="login-signin-password inlineb">
-        <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
+        <%= f.password_field :password, autocomplete: "off", :placeholder => "Password", :tabindex => "2" %>
         <% if devise_mapping.rememberable? -%>
         <div class="login-signin-remember inlineb">
-          <%= f.check_box :remember_me %>
+          <%= f.check_box :remember_me, :tabindex => "4" %>
           <%= f.label :remember_me %>
         </div>
       <% end -%>

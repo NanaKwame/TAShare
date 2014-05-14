@@ -224,6 +224,9 @@ var buildPreview;
   $("#cp-likeBtn").tooltip();
   $(".deleteResource").tooltip();
   $("#cp-likeBtnOutline").tooltip();
+  // $('.dropdown-menu').click(function(e) {
+  //     e.stopPropagation();
+  // });
 
 }
 
